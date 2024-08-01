@@ -8,6 +8,10 @@ source .env
 [[ -n $GIT_PERSONAL_EMAIL ]] \
   || (echo fill out the .env file, then run this command again && exit 0)
 
+command -v brew &> /dev/null \
+  || (echo error: homebrew is not installed && exit 1)
+
+BREW_FORMULAE=${1:-}
 CONFIG_DIR=$PWD/.config
 mkdir -p $CONFIG_DIR
 
@@ -17,6 +21,11 @@ prompt() {
   read -r response
 
   [[ $response == y ]] && return 0 || return 1
+}
+
+# Install Homebrew formulae
+brew_install() {
+  [[ $BREW_FORMULAE == -n ]] || brew install $@
 }
 
 # Copy file and replace {{VARIABLE}} with value of $VARIABLE
@@ -37,6 +46,7 @@ cp_env() {
 
 # Git
 if prompt configure Git; then
+  brew_install git
   cp_env git/.gitconfig $HOME
   cp_env git/.gitignore
   cp_env git/personal.gitconfig
@@ -45,6 +55,7 @@ fi
 
 # Zsh
 if prompt configure Zsh; then
+  brew_install asdf powerlevel10k zsh zsh-autocomplete zsh-syntax-highlighting
   cp_env zsh/.p10k.zsh
   cp_env zsh/.zshenv $HOME
   cp_env zsh/.zshrc $HOME
