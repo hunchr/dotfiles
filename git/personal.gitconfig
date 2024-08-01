@@ -1,0 +1,4 @@
+[user]
+	name = {{GIT_PERSONAL_NAME}}
+	email = {{GIT_PERSONAL_EMAIL}}
+	signingkey = {{GIT_PERSONAL_SIGNINGKEY}}

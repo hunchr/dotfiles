@@ -1,0 +1,10 @@
+[user]
+	name = {{GIT_WORK_NAME}}
+	email = {{GIT_WORK_EMAIL}}
+	signingkey = {{GIT_WORK_SIGNINGKEY}}
+[gpg]
+	format = ssh
+	program = {{GIT_SSH_PROGRAM}}
+[gpg "ssh"]
+	format = ssh
+	program = {{GIT_SSH_PROGRAM}}
