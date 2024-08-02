@@ -44,6 +44,13 @@ cp_env() {
   done
 }
 
+# asdf
+if prompt configure asdf; then
+  brew_install asdf
+  cp_env asdf/.asdfrc $HOME
+  cp_env asdf/.tool-versions $HOME
+fi
+
 # Git
 if prompt configure Git; then
   brew_install git
