@@ -32,15 +32,17 @@ brew_install() {
 cp_env() {
   local file=$CONFIG_DIR/$(basename $1)
   local symlink=${2:-}
-  local sed_i_arg=$(sed --version > /dev/null 2>&1 && echo '' || echo '""')
-  
+
   cp $1 $file
-  [[ -n $symlink ]] && echo ln -fs $file $symlink && ln -fs $file $symlink
+  [[ -n $symlink ]] && ln -fs $file $symlink
 
   while grep -q '{{[A-Z_]\+}}' $file; do
     var=$(grep -o '{{[A-Z_]\+}}' $file | head -1 | tr -d '{}')
     value=$(eval echo \$$var)
-    sed -i $sed_i_arg "s|{{$var}}|$value|g" $file
+
+    sed --version > /dev/null 2>&1 \
+      && sed -i "s|{{$var}}|$value|g" $file \
+      || sed -i '' "s|{{$var}}|$value|g" $file
   done
 }
 
