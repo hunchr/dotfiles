@@ -9,6 +9,6 @@ export GPG_TTY=$(tty)
 export ICLOUD="$HOME/Library/Mobile Documents/com~apple~CloudDocs/home"
 export LDFLAGS='-L/opt/homebrew/opt/llvm/lib/c++ -Wl,-rpath,/opt/homebrew/opt/llvm/lib/c++'
 export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/lib:/opt/homebrew/lib
-export PATH=$ICLOUD/coding/bin:$HOME/.cargo/bin:$BUN_INSTALL/bin:/opt/homebrew/bin:/opt/homebrew/opt/gnu-sed/libexec/gnubin:/opt/homebrew/opt/llvm/bin:$PATH
+export PATH=$ICLOUD/coding/bin:$HOME/.cargo/bin:$BUN_INSTALL/bin:/opt/homebrew/opt/gnu-sed/libexec/gnubin:/opt/homebrew/opt/llvm/bin:$PATH
 export RAILS_UID=$UID
 export TZ=UTC

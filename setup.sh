@@ -57,6 +57,7 @@ fi
 if prompt configure Zsh; then
   brew_install asdf powerlevel10k zsh zsh-autocomplete zsh-syntax-highlighting
   cp_env zsh/.p10k.zsh
+  cp_env zsh/.zprofile $HOME
   cp_env zsh/.zshenv $HOME
   cp_env zsh/.zshrc $HOME
 fi
