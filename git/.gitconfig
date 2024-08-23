@@ -1,7 +1,7 @@
 [alias]
 	a = add
 	aa = add .
-	b = branch --all --format='%(HEAD) %(color:green)%(refname:short)%(color:reset) %(color:yellow)(%(committerdate:relative))' --sort=committerdate
+	b = branch -a --format='%(HEAD) %(color:green)%(refname:short)%(color:reset) %(color:yellow)(%(committerdate:relative))' --sort=committerdate
 	c = checkout
 	cb = checkout -b
 	cd = checkout develop
@@ -9,13 +9,16 @@
 	cl = clone
 	cm = checkout main
 	cma = checkout master
-	d = !git diff --name-status $(git rev-parse HEAD) origin/HEAD
-	f = fetch origin --prune
-	l = log --graph --oneline --decorate
+	d = !git diff $(git rev-parse HEAD) origin/HEAD --name-status
+	f = !git fetch -p origin && git for-each-ref --format='%(refname:short) %(upstream:track)' | awk '$2 == \"[gone]\" {print $1}' | xargs -r git branch -D
+	l = log --decorate --graph --oneline
 	ld = log --date=format:'%Y-%m-%d' --pretty=format:'%h %ad %s'
+	ls = shortlog --all --email --numbered --summary
 	p = push
 	pf = push -f
 	pl = pull
+	prm = pull --rebase origin main
+	prma = pull --rebase origin master
 	pu = push -u origin main
 	r = reset
 	r1 = reset HEAD~1
@@ -23,9 +26,8 @@
 	rd = reset origin/develop
 	rm = reset origin/main
 	rma = reset origin/master
-	rp = repack -a -d -f --depth=250 --window=250
+	rp = repack -adf --depth=250 --window=250
 	s = switch --orphan
-	sl = shortlog --summary --numbered --email
 	t = tag
 	w = config --get user.email
 [checkout]
