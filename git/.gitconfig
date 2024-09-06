@@ -23,9 +23,9 @@
 	r = reset
 	r1 = reset HEAD~1
 	r2 = reset HEAD~2
-	rd = reset origin/develop
-	rm = reset origin/main
-	rma = reset origin/master
+	rod = reset origin/develop
+	rom = reset origin/main
+	roma = reset origin/master
 	rp = repack -adf --depth=250 --window=250
 	s = switch --orphan
 	t = tag
