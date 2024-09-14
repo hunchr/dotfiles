@@ -1,9 +1,9 @@
 fpath+=$HOME/.zfunc
+plugins=(git fast-syntax-highlighting zsh-autocomplete)
 
-source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
-source /opt/homebrew/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
-source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $ZSH/oh-my-zsh.sh
 source {{CONFIG_DIR}}/.p10k.zsh
+source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
 source $HOME/.bun/_bun
 . /opt/homebrew/opt/asdf/libexec/asdf.sh
 
@@ -12,6 +12,7 @@ alias bsrp='brew services restart postgresql'
 alias bu='bundle update --bundler && bundle update'
 alias c='code'
 alias dl="cd $HOME/Downloads"
+alias dotfiles='code {{PWD}}'
 alias f='fork .'
 alias fsize='du -sh * | sort -hr'
 alias g='git'
