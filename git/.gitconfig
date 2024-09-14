@@ -44,6 +44,8 @@
 	defaultBranch = main
 [pull]
 	rebase = true
+[push]
+	autoSetupRemote = true
 [include]
 	path = {{CONFIG_DIR}}/personal.gitconfig
 [includeIf "gitdir:{{GIT_WORK_DIR}}/"]
