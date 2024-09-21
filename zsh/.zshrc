@@ -19,7 +19,8 @@ RUBYOPT='-W:deprecated'
 TZ=UTC
 ZSH=$HOME/.oh-my-zsh
 
-source $ZSH/oh-my-zsh.sh
+eval "$(/opt/homebrew/bin/brew shellenv)"
+. $ZSH/oh-my-zsh.sh
 . /opt/homebrew/opt/asdf/libexec/asdf.sh
 
 alias b='bun run'
@@ -34,7 +35,7 @@ alias g='git'
 alias i="cd '$ICLOUD/coding'"
 alias ip='ifconfig | grep "inet " | grep -v 127.0.0.1 | cut -d\  -f2'
 alias nosync="ln -s $HOME/node_modules ."
-alias pgrestore='pg_restore --verbose --clean --no-acl --no-owner -h localhost -U chr -d'
+alias pgrestore="pg_restore --verbose --clean --no-acl --no-owner -h localhost -U $USER -d"
 alias pinentry='pinentry-mac'
 alias quarantine='xattr -d com.apple.quarantine'
 alias r='bundle exec rails'
@@ -46,6 +47,6 @@ alias rspec='bundle exec rspec -f documentation'
 alias rubocop='bundle exec rubocop'
 alias simplecov='open coverage/index.html'
 alias stablediff="$HOME/stable-diffusion-webui && ./webui.sh --no-half"
-alias svgo='bunx --bun svgo -o out --multipass'
+alias svgo='bun -b x svgo -o out --multipass'
 alias treedir='tree . -ahq --du --sort=size > tree.txt && code tree.txt'
 alias zshrc="code $HOME/.zshrc"

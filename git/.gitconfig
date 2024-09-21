@@ -36,7 +36,7 @@
 	gpgsign = true
 [core]
 	editor = code
-	excludesFile = {{CONFIG_DIR}}/.gitignore
+	excludesFile = {{HOME}}/.gitignore
 [gpg]
 	format = openpgp
 	program = gpg
@@ -46,7 +46,9 @@
 	rebase = true
 [push]
 	autoSetupRemote = true
-[include]
-	path = {{CONFIG_DIR}}/personal.gitconfig
+[user]
+	name = {{GIT_PERSONAL_NAME}}
+	email = {{GIT_PERSONAL_EMAIL}}
+	signingkey = {{GIT_PERSONAL_SIGNINGKEY}}
 [includeIf "gitdir:{{GIT_WORK_DIR}}/"]
-	path = {{CONFIG_DIR}}/work.gitconfig
+	path = {{HOME}}/.gitconfig.work
