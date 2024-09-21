@@ -10,19 +10,6 @@ shopt -s dotglob
 command -v brew > /dev/null 2>&1 || (echo 'error: brew not found' && exit 1)
 mkdir -p "$HOME/.zfunc"
 
-# Install Homebrew formulae if not already installed
-brew_install() {
-  brew_bin=$(brew --prefix)/bin
-
-  for pkg in "$@"; do
-    find "$brew_bin/$pkg" > /dev/null 2>&1 || brew install "$pkg"
-  done
-}
-
-exist() {
-  command -v "$1" > /dev/null 2>&1
-}
-
 # Replace {{VARIABLE}} with value of $VARIABLE
 replace_placeholders() {
   while grep -q '{{[A-Z_]\+}}' "$1"; do
@@ -37,8 +24,8 @@ replace_placeholders() {
   done
 }
 
-# Copy each node in config directory to target
-configure() {
+# Copy config files to home directory
+dotfiles() {
   for path in "$@"; do
     for node in "$path"/*; do
       cp -fR "$node" "$HOME"
@@ -47,13 +34,31 @@ configure() {
   done
 }
 
-# Install formulae and configure dotfiles
-brew_install asdf bash cmake fd git gpg mkcert pinentry-mac jq \
-  tree vips xz yq zsh
-configure asdf git zsh
+# Install brew casks
+casks() {
+  for cask in "$@"; do
+    [ -d "/applications/$cask.app" ] || brew install --cask --force "$cask"
+  done
+}
+
+# Install brew formulae
+formulae() {
+  brew_bin=$(brew --prefix)/bin
+
+  for formulae in "$@"; do
+    [ -f "$brew_bin/$formulae" ] || brew install "$formulae"
+  done
+}
+
+# Install and configure everything
+dotfiles asdf git zsh
+casks docker fork handbrake libreoffice librewolf obs postman protonvpn \
+  qbittorrent raycast signal vlc whatsapp
+formulae asdf bash chromedriver cmake fd geckodriver gh git gpg mkcert ninja \
+  pinentry-mac jq tree vips wget xz yq zsh
 
 # Bun
-exist bun || (curl -fsSL https://bun.sh/install | bash)
+command -v bun > /dev/null 2>&1 || (curl -fsSL https://bun.sh/install | bash)
 ln -fs "$HOME/.bun/_bun" "$HOME/.zfunc"
 
 # mkcert
