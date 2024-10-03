@@ -46,7 +46,7 @@ alias rr="rails routes | grep"
 alias rspec='bundle exec rspec -f documentation'
 alias rubocop='bundle exec rubocop'
 alias simplecov='open coverage/index.html'
-alias stablediff="$HOME/stable-diffusion-webui && ./webui.sh --no-half"
+alias stablediff="cd $HOME/stable-diffusion-webui && ./webui.sh --no-half"
 alias svgo='bun -b x svgo -o out --multipass'
 alias treedir='tree . -ahq --du --sort=size > tree.txt && code tree.txt'
 alias zshrc="code $HOME/.zshrc"

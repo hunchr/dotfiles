@@ -1,3 +1,5 @@
+[advice]
+	mergeConflict = false
 [alias]
 	a = add
 	aa = add .
@@ -7,8 +9,7 @@
 	cd = checkout develop
 	ci = !TZ=UTC git commit -S -m
 	cl = clone
-	cm = checkout main
-	cma = checkout master
+	cm = !git checkout "$(git branch --format '%(refname:short)' -l main master)"
 	d = !git diff $(git rev-parse HEAD) origin/HEAD --name-status
 	f = !git fetch -p origin && git for-each-ref --format='%(refname:short) %(upstream:track)' | awk '$2 == \"[gone]\" {print $1}' | xargs -r git branch -D
 	l = log --decorate --graph --oneline
@@ -17,15 +18,12 @@
 	p = push
 	pf = push -f
 	pl = pull
-	prm = pull --rebase origin main
-	prma = pull --rebase origin master
-	pu = push -u origin main
+	pr = !git pull --rebase origin "$(git branch --format '%(refname:short)' -l main master)"
 	r = reset
 	r1 = reset HEAD~1
 	r2 = reset HEAD~2
 	rod = reset origin/develop
-	rom = reset origin/main
-	roma = reset origin/master
+	rom = !git reset "origin/$(git branch --format '%(refname:short)' -l main master)"
 	rp = repack -adf --depth=250 --window=250
 	s = switch --orphan
 	t = tag
