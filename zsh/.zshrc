@@ -34,6 +34,7 @@ alias fsize='du -sh * | sort -hr'
 alias g='git'
 alias i="cd '$ICLOUD/coding'"
 alias ip='ifconfig | grep "inet " | grep -v 127.0.0.1 | cut -d\  -f2'
+alias ls="ls -AF"
 alias nosync="ln -s $HOME/node_modules ."
 alias pgrestore="pg_restore --verbose --clean --no-acl --no-owner -h localhost -U $USER -d"
 alias pinentry='pinentry-mac'
@@ -48,5 +49,5 @@ alias rubocop='bundle exec rubocop'
 alias simplecov='open coverage/index.html'
 alias stablediff="cd $HOME/stable-diffusion-webui && ./webui.sh --no-half"
 alias svgo='bun -b x svgo -o out --multipass'
-alias treedir='tree . -ahq --du --sort=size > tree.txt && code tree.txt'
+alias tree='tree . -ahno tree.txt -FI ".git|node_modules|tmp" --dirsfirst --du --sort=size'
 alias zshrc="code $HOME/.zshrc"
