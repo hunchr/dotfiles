@@ -18,7 +18,7 @@
 	p = push
 	pf = push -f
 	pl = pull
-	pr = !git pull --rebase origin "$(git branch --format '%(refname:short)' -l main master)"
+	pr = !git pull --rebase origin "$(git branch --format '%(refname:short)' -l main master)" || fork .
 	r = reset
 	r1 = reset HEAD~1
 	r2 = reset HEAD~2
