@@ -37,7 +37,8 @@ dotfiles() {
 # Install brew casks
 casks() {
   for cask in "$@"; do
-    [ -d "/applications/$cask.app" ] || brew install --cask --force "$cask"
+    [ -d "/applications/$(echo "$cask" | tr '-' ' ').app" ] \
+      || brew install --cask --force "$cask"
   done
 }
 
@@ -52,10 +53,11 @@ formulae() {
 
 # Install and configure everything
 dotfiles asdf git zsh
-casks docker fork handbrake libreoffice librewolf obs postman protonvpn \
-  qbittorrent raycast signal vlc whatsapp
-formulae asdf bash chromedriver cmake fd geckodriver gh git gpg mkcert ninja \
-  pinentry-mac jq tree vips wget xz yq zsh
+casks docker fork handbrake libreoffice librewolf obs postman proton-drive \
+  proton-pass protonvpn qbittorrent raycast signal vlc whatsapp
+formulae asdf automake bash brotli chromedriver cmake deno docker fd ffmpeg \
+  geckodriver gh git go gpg jq julia mkcert mysql ninja pinentry-mac pkgconf \
+  shellcheck tree vips wget xz yq zsh
 
 # Bun
 command -v bun > /dev/null 2>&1 || (curl -fsSL https://bun.sh/install | bash)
