@@ -56,7 +56,7 @@ dotfiles asdf git zsh
 casks docker fork handbrake libreoffice librewolf obs postman proton-drive \
   proton-pass protonvpn qbittorrent raycast signal vlc whatsapp
 formulae asdf automake bash brotli chromedriver cmake deno docker fd ffmpeg \
-  geckodriver gh git go gpg jq julia mkcert mysql ninja pinentry-mac pkgconf \
+  geckodriver gh git go gpg jq julia mkcert ninja pinentry-mac pkgconf \
   shellcheck tree vips wget xz yq zsh
 
 # Bun
