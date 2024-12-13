@@ -3,29 +3,31 @@
 [alias]
 	a = add
 	aa = add .
-	b = branch -a --format='%(HEAD) %(color:green)%(refname:short)%(color:reset) %(color:yellow)(%(committerdate:relative))' --sort=committerdate
+	b = branch -a --format='%(HEAD) %(refname:short) %(color:black)(%(committerdate:relative))'
 	c = checkout
 	cb = checkout -b
 	cd = checkout develop
-	ci = !TZ=UTC git commit -S -m
+	ci = !TZ=UTC git commit -Sm
 	cl = clone
 	cm = !git checkout "$(git branch --format '%(refname:short)' -l main master)"
 	d = !git diff $(git rev-parse HEAD) origin/HEAD --name-status
 	f = !git fetch -p origin && git for-each-ref --format='%(refname:short) %(upstream:track)' | awk '$2 == \"[gone]\" {print $1}' | xargs -r git branch -D
 	l = log --decorate --graph --oneline
 	ld = log --date=format:'%Y-%m-%d' --pretty=format:'%h %ad %s'
-	ls = shortlog --all --email --numbered --summary
+	ls = shortlog -ens
 	p = push
 	pf = push -f
 	pl = pull
-	pr = !git pull --rebase origin "$(git branch --format '%(refname:short)' -l main master)" || fork .
+	pr = !git pull -r origin develop || fork .
+	prm = !git pull -r origin "$(git branch --format '%(refname:short)' -l main master)" || fork .
 	r = reset
 	r1 = reset HEAD~1
 	r2 = reset HEAD~2
-	rod = reset origin/develop
+	ro = reset origin/develop
 	rom = !git reset "origin/$(git branch --format '%(refname:short)' -l main master)"
 	rp = repack -adf --depth=250 --window=250
-	s = switch --orphan
+	s = show
+	sw = switch --orphan
 	t = tag
 	w = config --get user.email
 [checkout]
@@ -40,6 +42,8 @@
 	program = gpg
 [init]
 	defaultBranch = main
+[pager]
+	branch = false
 [pull]
 	rebase = true
 [push]
