@@ -29,6 +29,7 @@
 	s = show
 	sw = switch --orphan
 	t = tag
+	tp = push origin tag
 	w = config --get user.email
 [checkout]
 	defaultRemote = origin

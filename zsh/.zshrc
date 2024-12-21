@@ -2,7 +2,7 @@ fpath+=$HOME/.zfunc
 plugins=(fast-syntax-highlighting zsh-autocomplete)
 
 export BUN_INSTALL=$HOME/.bun
-export CPPFLAGS='-I/opt/homebrew/opt/llvm/include -I/opt/homebrew/opt/mysql@8.4/include'
+export CPPFLAGS='-I/opt/homebrew/opt/llvm/include -I/opt/homebrew/opt/postgresql@17/include -I/opt/homebrew/opt/mysql@8.4/include'
 export DISABLE_UNTRACKED_FILES_DIRTY=true
 export DISPLAY=localhost:0
 export DO_NOT_TRACK=1
@@ -11,9 +11,9 @@ export FONTAWESOME_NPM_AUTH_TOKEN={{FONTAWESOME_NPM_AUTH_TOKEN}}
 export GPG_TTY=$(tty)
 export ICLOUD="$HOME/Library/Mobile Documents/com~apple~CloudDocs/home"
 export LANG=en_US.UTF-8
-export LDFLAGS='-L/opt/homebrew/opt/llvm/lib/c++ -L/opt/homebrew/opt/mysql@8.4/lib'
-export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/lib:/opt/homebrew/lib:/opt/homebrew/opt/mysql@8.4/lib
-export PATH=$ICLOUD/coding/bin:$HOME/.cargo/bin:/opt/homebrew/opt/gnu-sed/libexec/gnubin:/opt/homebrew/opt/llvm/bin:/opt/homebrew/opt/mysql@8.4/bin:$PATH
+export LDFLAGS='-L/opt/homebrew/opt/llvm/lib/c++ -L/opt/homebrew/opt/postgresql@17/lib -L/opt/homebrew/opt/mysql@8.4/lib'
+export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/lib:/opt/homebrew/lib:/opt/homebrew/opt/postgresql@17/lib:/opt/homebrew/opt/mysql@8.4/lib
+export PATH=$ICLOUD/coding/bin:$HOME/.cargo/bin:/opt/homebrew/opt/gnu-sed/libexec/gnubin:/opt/homebrew/opt/llvm/bin:/opt/homebrew/opt/postgresql@17/bin:/opt/homebrew/opt/mysql@8.4/bin:$PATH
 export RAILS_UID=$UID
 export RUBYOPT=-W:deprecated
 export TZ=UTC
@@ -24,6 +24,8 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 . /opt/homebrew/opt/asdf/libexec/asdf.sh
 
 alias b='bun run'
+alias be='bundle exec'
+alias bi='bundle install'
 alias bsrp='brew services restart postgresql'
 alias bu='bundle update'
 alias c='code'
