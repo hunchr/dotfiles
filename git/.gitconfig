@@ -7,7 +7,7 @@
 	c = checkout
 	cb = checkout -b
 	cd = checkout develop
-	ci = !TZ=UTC git commit -Sm
+	ci = !TZ=UTC git commit -S -m
 	cl = clone
 	cm = !git checkout "$(git branch --format '%(refname:short)' -l main master)"
 	d = !git diff $(git rev-parse HEAD) origin/HEAD --name-status
