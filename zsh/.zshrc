@@ -14,13 +14,13 @@ export LANG=en_US.UTF-8
 export LDFLAGS='-L/opt/homebrew/opt/llvm/lib/c++ -L/opt/homebrew/opt/postgresql@17/lib -L/opt/homebrew/opt/mysql@8.4/lib'
 export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/lib:/opt/homebrew/lib:/opt/homebrew/opt/postgresql@17/lib:/opt/homebrew/opt/mysql@8.4/lib
 export PATH=$ICLOUD/coding/bin:$HOME/.cargo/bin:/opt/homebrew/opt/gnu-sed/libexec/gnubin:/opt/homebrew/opt/llvm/bin:/opt/homebrew/opt/postgresql@17/bin:/opt/homebrew/opt/mysql@8.4/bin:$PATH
-export RAILS_UID=$UID
 export RUBYOPT=-W:deprecated
 export TZ=UTC
 export ZSH=$HOME/.oh-my-zsh
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
 . $ZSH/oh-my-zsh.sh
+. <(nctl completions -c zsh)
 . /opt/homebrew/opt/asdf/libexec/asdf.sh
 
 alias b='bun run'

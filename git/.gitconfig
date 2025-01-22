@@ -4,12 +4,13 @@
 	a = add
 	aa = add .
 	b = branch -a --format='%(HEAD) %(refname:short) %(color:black)(%(committerdate:relative))'
+	bd = branch -D
 	c = checkout
 	cb = checkout -b
 	cd = checkout develop
-	ci = !TZ=UTC git commit -S -m
 	cl = clone
 	cm = !git checkout "$(git branch --format '%(refname:short)' -l main master)"
+	co = !TZ=UTC git commit -S -m
 	d = !git diff $(git rev-parse HEAD) origin/HEAD --name-status
 	f = !git fetch -p origin && git for-each-ref --format='%(refname:short) %(upstream:track)' | awk '$2 == \"[gone]\" {print $1}' | xargs -r git branch -D
 	l = log --decorate --graph --oneline
@@ -18,18 +19,21 @@
 	p = push
 	pf = push -f
 	pl = pull
-	pr = !git pull -r origin develop || fork .
+	pr = pull -r origin
+	prd = !git pull -r origin develop || fork .
 	prm = !git pull -r origin "$(git branch --format '%(refname:short)' -l main master)" || fork .
+	pt = push origin tag
 	r = reset
 	r1 = reset HEAD~1
 	r2 = reset HEAD~2
-	ro = reset origin/develop
-	rom = !git reset "origin/$(git branch --format '%(refname:short)' -l main master)"
+	rd = reset origin/develop
+	rg = remote get-url origin
+	rma = !git reset "origin/$(git branch --format '%(refname:short)' -l main master)"
 	rp = repack -adf --depth=250 --window=250
+	rs = remote set-url origin
 	s = show
 	sw = switch --orphan
 	t = tag
-	tp = push origin tag
 	w = config --get user.email
 [checkout]
 	defaultRemote = origin
