@@ -8,6 +8,8 @@
 	c = checkout
 	cb = checkout -b
 	cd = checkout develop
+	cfg = !code {{HOME}}/.gitconfig
+	cfgw = !code {{HOME}}/.gitconfig.work
 	cl = clone
 	cm = !git checkout "$(git branch --format '%(refname:short)' -l main master)"
 	co = !TZ=UTC git commit -S -m
@@ -15,7 +17,6 @@
 	f = !git fetch -p origin && git for-each-ref --format='%(refname:short) %(upstream:track)' | awk '$2 == \"[gone]\" {print $1}' | xargs -r git branch -D
 	l = log --decorate --graph --oneline
 	ld = log --date=format:'%Y-%m-%d' --pretty=format:'%h %ad %s'
-	ls = shortlog -ens
 	p = push
 	pf = push -f
 	pl = pull
@@ -32,6 +33,7 @@
 	rp = repack -adf --depth=250 --window=250
 	rs = remote set-url origin
 	s = show
+	sl = shortlog -ens
 	sw = switch --orphan
 	t = tag
 	w = config --get user.email
@@ -40,7 +42,7 @@
 [commit]
 	gpgsign = true
 [core]
-	editor = code
+	editor = 'code --wait'
 	excludesFile = {{HOME}}/.gitignore
 [gpg]
 	format = openpgp

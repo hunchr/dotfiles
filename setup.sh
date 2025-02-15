@@ -34,30 +34,21 @@ dotfiles() {
   done
 }
 
-# Install brew casks
-casks() {
-  for cask in "$@"; do
-    [ -d "/applications/$(echo "$cask" | tr '-' ' ').app" ] \
-      || brew install --cask --force "$cask"
-  done
-}
+# Install brew formulae and casks
+if [ "${1-}" = i ]; then
+  brew install --formula asdf automake awscli bash bazel cmake coreutils deno \
+    docker exiftool fd ffmpeg findutils geckodriver gh git gnu-sed go \
+    handbrake jpeg jq julia kind libavif libyaml llvm mas mkcert mysql nctl \
+    ninja nmap parallel pdftk-java pinentry-mac postgresql@17 pygments redis \
+    rustup s3cmd shellcheck tree vips wget yarn yq zsh
+  brew install --cask 1password-cli chromedriver docker fork google-chrome \
+    handbrake libreoffice librewolf obs pgadmin4 postman proton-drive \
+    proton-pass protonvpn qbittorrent qlvideo raycast signal slack spotify \
+    vlc whatsapp
+fi
 
-# Install brew formulae
-formulae() {
-  brew_bin=$(brew --prefix)/bin
-
-  for formulae in "$@"; do
-    [ -f "$brew_bin/$formulae" ] || brew install "$formulae"
-  done
-}
-
-# Install and configure everything
+# Copy dotfiles
 dotfiles asdf git zsh
-casks docker fork handbrake libreoffice librewolf obs postman proton-drive \
-  proton-pass protonvpn qbittorrent raycast signal slack spotify vlc whatsapp
-formulae asdf automake bash brotli chromedriver cmake deno docker fd ffmpeg \
-  geckodriver gh git go gpg jq julia mkcert ninja pinentry-mac pkgconf \
-  shellcheck tree vips wget xz yq zsh
 
 # Bun
 command -v bun > /dev/null 2>&1 || (curl -fsSL https://bun.sh/install | bash)

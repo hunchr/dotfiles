@@ -12,7 +12,7 @@ then run it:
 ```sh
 git clone https://github.com/hunchr/dotfiles.git
 cd dotfiles
-./setup.sh
+./setup.sh i
 ```
 
 > [!CAUTION]
