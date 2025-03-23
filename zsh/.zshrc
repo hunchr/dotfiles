@@ -14,7 +14,7 @@ export ICLOUD="$HOME/Library/Mobile Documents/com~apple~CloudDocs/home"
 export LANG=en_US.UTF-8
 export LDFLAGS='-L/opt/homebrew/opt/llvm/lib/c++ -L/opt/homebrew/opt/sqlite/lib -L/opt/homebrew/opt/postgresql@17/lib'
 export LIBRARY_PATH=/usr/local/lib:/opt/homebrew/lib:/opt/homebrew/opt/postgresql@17/lib:/opt/homebrew/opt/mysql@8.4/lib:$LIBRARY_PATH
-export PATH=$ICLOUD/coding/bin:$HOME/.asdf/shims:$HOME/.cargo/bin:/opt/homebrew/opt/gnu-sed/libexec/gnubin:/opt/homebrew/opt/llvm/bin:/opt/homebrew/opt/sqlite/bin:/opt/homebrew/opt/postgresql@17/bin:$PATH
+export PATH=$ICLOUD/coding/bin:$HOME/.asdf/shims:$HOME/.cargo/bin:/opt/homebrew/opt/gnu-sed/libexec/gnubin:/opt/homebrew/opt/llvm/bin:/opt/homebrew/opt/sqlite/bin:/opt/homebrew/opt/postgresql@17/bin:$HOME/.bun/bin:$PATH
 export RUBYOPT=-W:deprecated
 export TZ=UTC
 export ZSH=$HOME/.oh-my-zsh
@@ -63,4 +63,5 @@ alias sqlite='sqlite3'
 alias stablediff='cd $HOME/stable-diffusion-webui && ./webui.sh --no-half'
 alias svgo='bun -b x svgo -o out --multipass'
 alias tree='tree . -ahno tree.txt -FI ".git|node_modules|tmp" --dirsfirst --du --sort=size'
+alias unhide='chflags -R 0 .'
 alias zshrc='code $HOME/.zshrc'
