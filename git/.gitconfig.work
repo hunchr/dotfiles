@@ -4,7 +4,7 @@
 	signingkey = {{GIT_WORK_SIGNINGKEY}}
 [gpg]
 	format = ssh
-	program = {{GIT_SSH_PROGRAM}}
+	program = {{GIT_WORK_SSH_PROGRAM}}
 [gpg "ssh"]
 	format = ssh
-	program = {{GIT_SSH_PROGRAM}}
+	program = {{GIT_WORK_SSH_PROGRAM}}

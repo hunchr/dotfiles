@@ -4,7 +4,6 @@
 	a = add
 	aa = add .
 	b = branch -a --format='%(HEAD) %(refname:short) %(color:black)(%(committerdate:relative))'
-	bd = branch -D
 	c = checkout
 	cb = checkout -b
 	cd = checkout develop
@@ -14,6 +13,7 @@
 	cm = !git checkout "$(git branch --format '%(refname:short)' -l main master)"
 	co = !TZ=UTC git commit -S -m
 	d = !git diff $(git rev-parse HEAD) origin/HEAD --name-status
+	db = branch -D
 	f = !git fetch -p origin && git for-each-ref --format='%(refname:short) %(upstream:track)' | awk '$2 == \"[gone]\" {print $1}' | xargs -r git branch -D
 	l = log --decorate --graph --oneline
 	ld = log --date=format:'%Y-%m-%d' --pretty=format:'%h %ad %s'
@@ -55,9 +55,11 @@
 	rebase = true
 [push]
 	autoSetupRemote = true
-[user]
-	name = {{GIT_PERSONAL_NAME}}
-	email = {{GIT_PERSONAL_EMAIL}}
-	signingkey = {{GIT_PERSONAL_SIGNINGKEY}}
+[includeIf "gitdir:{{GIT_PERSONAL_DIR}}/"]
+	path = {{HOME}}/.gitconfig.personal
+[includeIf "gitdir:{{GIT_PERSONAL_DRIVE}}/"]
+	path = {{HOME}}/.gitconfig.personal
 [includeIf "gitdir:{{GIT_WORK_DIR}}/"]
+	path = {{HOME}}/.gitconfig.work
+[includeIf "gitdir:{{GIT_WORK_DRIVE}}/"]
 	path = {{HOME}}/.gitconfig.work
