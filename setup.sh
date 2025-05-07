@@ -48,7 +48,7 @@ if [ "${1-}" = i ]; then
 fi
 
 # Copy dotfiles
-dotfiles asdf git zsh
+dotfiles git mise zsh
 
 # Bun
 command -v bun > /dev/null 2>&1 || (curl -fsSL https://bun.sh/install | bash)

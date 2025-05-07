@@ -14,14 +14,14 @@ export ICLOUD="$HOME/Library/Mobile Documents/com~apple~CloudDocs/home"
 export LANG=en_US.UTF-8
 export LDFLAGS='-L/opt/homebrew/opt/llvm/lib/c++ -L/opt/homebrew/opt/sqlite/lib -L/opt/homebrew/opt/postgresql@17/lib'
 export LIBRARY_PATH=/usr/local/lib:/opt/homebrew/lib:/opt/homebrew/opt/postgresql@17/lib:/opt/homebrew/opt/mysql@8.4/lib:$LIBRARY_PATH
-export PATH=$ICLOUD/coding/bin:$HOME/.asdf/shims:$HOME/.cargo/bin:/opt/homebrew/opt/gnu-sed/libexec/gnubin:/opt/homebrew/opt/llvm/bin:/opt/homebrew/opt/sqlite/bin:/opt/homebrew/opt/postgresql@17/bin:$HOME/.bun/bin:$PATH
+export PATH=$ICLOUD/coding/bin:$HOME/.cargo/bin:/opt/homebrew/opt/gnu-sed/libexec/gnubin:/opt/homebrew/opt/llvm/bin:/opt/homebrew/opt/sqlite/bin:/opt/homebrew/opt/postgresql@17/bin:$HOME/.bun/bin:$PATH
 export RUBYOPT=-W:deprecated
 export TZ=UTC
 export ZSH=$HOME/.oh-my-zsh
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
+eval "$(/opt/homebrew/bin/mise activate zsh)"
 . $ZSH/oh-my-zsh.sh
-. <(nctl completions -c zsh)
 
 alias b='bun run'
 alias be='bundle exec'
@@ -54,7 +54,7 @@ alias r='bundle exec rails'
 alias rc='bundle exec rubocop'
 alias rcompl='gem i solargraph && gem i ruby-lsp'
 alias rp='bundle exec rspec -f documentation'
-alias rprod='bundle exec rails assets:precompile && bundle exec rails s -b ssl://localhost:3000?cert=$HOME/.localhost-cert.pem&key=$HOME/.localhost-key.pem&verify_mode=none -e production -p 3000'
+alias rprod='bundle exec rails assets:precompile && bundle exec rails s -b "ssl://localhost:3000?cert=$HOME/.localhost-cert.pem&key=$HOME/.localhost-key.pem&verify_mode=none" -e production -p 3000'
 alias rprod_db='RAILS_ENV=production DISABLE_DATABASE_ENVIRONMENT_CHECK=1 bundle exec rails db:reset'
 alias rr='rails routes | grep'
 alias s3cfg='code $HOME/.s3cfg'
