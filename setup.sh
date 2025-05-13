@@ -34,6 +34,12 @@ dotfiles() {
   done
 }
 
+# Clone ohmyzsh plugin
+plugin() {
+  target=$HOME/.oh-my-zsh/plugins/$(basename "$1")
+  [ -d "$target" ] || git clone --depth=1 "https://github.com/$1" "$target"
+}
+
 # Install brew formulae and casks
 if [ "${1-}" = i ]; then
   brew install --formula asdf automake awscli bash bazel cmake coreutils deno \
@@ -49,6 +55,10 @@ fi
 
 # Copy dotfiles
 dotfiles git mise zsh
+
+# Zsh
+plugin zdharma-continuum/fast-syntax-highlighting
+plugin marlonrichert/zsh-autocomplete
 
 # Bun
 command -v bun > /dev/null 2>&1 || (curl -fsSL https://bun.sh/install | bash)
