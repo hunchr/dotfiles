@@ -59,15 +59,31 @@ if command mkdir "${ZSH_COMPDUMP}.lock" 2>/dev/null; then
   command rm -rf "$ZSH_COMPDUMP.zwc.old" "${ZSH_COMPDUMP}.lock"
 fi
 
+# Sets color variable such as $fg, $bg, $color and $reset_color
+autoload -U colors && colors
+
+# Expand variables and commands in PROMPT variables
+setopt prompt_subst
+
 for lib_file in "$ZSH"/lib/*; do
   source "$lib_file"
 done
+
 for plugin in $plugins; do
   source "$ZSH/plugins/$plugin/$plugin.plugin.zsh"
 done
 
 unset lib_file plugin
-source "$ZSH/sh.zsh-theme"
+
+LS_COLORS='di=1;36:ln=35:so=32:pi=33:ex=31:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43'
+
+PROMPT="%{$fg[blue]%}%c%{$reset_color%}"
+PROMPT+=' $(git_prompt_info)'
+PROMPT+="%(?:%{$fg[green]%}%1{❯%}:%{$fg[red]%}%1{❯%})%{$reset_color%} "
+ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[green]%}"
+ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%} "
+ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[yellow]%}%1{*%}"
+ZSH_THEME_GIT_PROMPT_CLEAN=''
 
 # set completion colors to be the same as `ls`, after theme has been loaded
-[[ -z "$LS_COLORS" ]] || zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
