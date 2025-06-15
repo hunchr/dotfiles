@@ -67,7 +67,7 @@
   "prettier.enable": true,
   "prettier.requireConfig": true,
   "prettier.useEditorConfig": false,
-  "rubyLsp.formatter": "rubocop",
+  "rubyLsp.formatter": "rubocop_internal",
 
   // GitLens
   "gitlens.views.searchAndCompare.avatars": false,
@@ -86,7 +86,7 @@
   },
 
   // Ruby
-  "emmet.includeLanguages": { "html.erb": "html" },
+  "emmet.includeLanguages": { "erb": "html" },
   "files.associations": {
     "*.gemfile": "ruby",
     "Gemfile": "ruby"
