@@ -24,16 +24,6 @@ replace_placeholders() {
   done
 }
 
-# Copy config files to home directory
-dotfiles() {
-  for path in "$@"; do
-    for node in "$path"/*; do
-      cp -fR "$node" "$HOME"
-      [ -d "$node" ] || replace_placeholders "$HOME/$(basename "$node")"
-    done
-  done
-}
-
 # Clone ohmyzsh plugin
 plugin() {
   target=$HOME/.oh-my-zsh/plugins/$(basename "$1")
@@ -53,8 +43,11 @@ if [ "${1-}" = i ]; then
     vlc whatsapp
 fi
 
-# Copy dotfiles
-dotfiles git mise zsh
+# Copy config files to home directory
+for node in home/*; do
+  cp -fR "$node" "$HOME"
+  [ -d "$node" ] || replace_placeholders "$HOME/$(basename "$node")"
+done
 
 # Zsh
 plugin zdharma-continuum/fast-syntax-highlighting
