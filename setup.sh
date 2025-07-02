@@ -7,8 +7,7 @@ shopt -s dotglob
 . .env
 
 [ -n "$GIT_PERSONAL_EMAIL" ] || (echo 'error: fill out the .env file' && exit 0)
-command -v brew > /dev/null 2>&1 || (echo 'error: brew not found' && exit 1)
-mkdir -p "$HOME/.zfunc"
+type -p brew > /dev/null 2>&1 || (echo 'error: brew not found' && exit 1)
 
 # Replace {{VARIABLE}} with value of $VARIABLE
 replace_placeholders() {
@@ -32,15 +31,15 @@ plugin() {
 
 # Install brew formulae and casks
 if [ "${1-}" = i ]; then
-  brew install --formula asdf automake awscli bash bazel cmake coreutils deno \
-    docker exiftool fd ffmpeg findutils geckodriver gh git gnu-sed go \
+  brew install --formula automake awscli bash bazel cmake coreutils deno \
+    docker exiftool fd ffmpeg findutils geckodriver gh git gnu-sed go graphviz \
     handbrake jpeg jq julia kind libavif libyaml llvm mas mkcert mysql nctl \
     ninja nmap parallel pdftk-java pinentry-mac postgresql@17 pygments redis \
     rustup s3cmd shellcheck tree vips wget yarn yq zsh
   brew install --cask 1password-cli chromedriver docker fork google-chrome \
-    handbrake libreoffice librewolf obs pgadmin4 postman proton-drive \
-    proton-pass protonvpn qbittorrent qlvideo raycast signal slack spotify \
-    vlc whatsapp
+    handbrake-app libreoffice librewolf obs pgadmin4 proton-drive proton-pass \
+    protonvpn qbittorrent qlvideo raycast signal slack spotify tunnelblick vlc \
+    whatsapp
 fi
 
 # Copy config files to home directory
@@ -54,7 +53,8 @@ plugin zdharma-continuum/fast-syntax-highlighting
 plugin marlonrichert/zsh-autocomplete
 
 # Bun
-command -v bun > /dev/null 2>&1 || (curl -fsSL https://bun.sh/install | bash)
+type -p bun > /dev/null 2>&1 || (curl -fsSL https://bun.sh/install | bash)
+mkdir -p "$HOME/.zfunc"
 ln -fs "$HOME/.bun/_bun" "$HOME/.zfunc"
 
 # mkcert
