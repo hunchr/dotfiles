@@ -7,14 +7,14 @@ export CPPFLAGS='-I/opt/homebrew/opt/llvm/include -I/opt/homebrew/opt/sqlite/inc
 export DISABLE_UNTRACKED_FILES_DIRTY=true
 export DISPLAY=localhost:0
 export DO_NOT_TRACK=1
+export DRIVE="$HOME/Library/Mobile Documents/com~apple~CloudDocs/home"
 export EDITOR='code --wait'
 export FONTAWESOME_NPM_AUTH_TOKEN={{FONTAWESOME_NPM_AUTH_TOKEN}}
 export GPG_TTY=$(tty)
-export ICLOUD="$HOME/Library/Mobile Documents/com~apple~CloudDocs/home"
 export LANG=en_US.UTF-8
 export LDFLAGS='-L/opt/homebrew/opt/llvm/lib/c++ -L/opt/homebrew/opt/sqlite/lib -L/opt/homebrew/opt/postgresql@17/lib'
 export LIBRARY_PATH=/usr/local/lib:/opt/homebrew/lib:/opt/homebrew/opt/postgresql@17/lib:/opt/homebrew/opt/mysql@8.4/lib:$LIBRARY_PATH
-export PATH=$ICLOUD/coding/bin:$HOME/.cargo/bin:/opt/homebrew/opt/gnu-sed/libexec/gnubin:/opt/homebrew/opt/llvm/bin:/opt/homebrew/opt/sqlite/bin:/opt/homebrew/opt/postgresql@17/bin:$HOME/.bun/bin:$PATH
+export PATH=$DRIVE/coding/bin:$HOME/.cargo/bin:$HOME/go/bin:/opt/homebrew/opt/gnu-sed/libexec/gnubin:/opt/homebrew/opt/llvm/bin:/opt/homebrew/opt/sqlite/bin:/opt/homebrew/opt/postgresql@17/bin:$HOME/.bun/bin:$PATH
 export RUBYOPT=-W:deprecated
 export TZ=UTC
 export ZSH=$HOME/.oh-my-zsh
@@ -38,7 +38,8 @@ alias f='fork .'
 alias ffcolor='open https://color.firefox.com/?theme=XQAAAAJ6AgAAAAAAAABBKYhm849SCicxcUEYWXcGHf3p79EhVPQ41r7xcfZ9PTtZXOCodCzcptzyX3upVH9adVuj2mXdFr63EzkgliO-MRy-QJvv3UOz8NB6_XLCNEkN6pWzKrg907l38HgqznJdbpzuM6NIBQtjTzdvmSxavrK7qGahlGQ5xWlQEvBlqV0qvHpAum8iaEDF5LZI3giZMaZeLTd8lr9PtdYjRFPqmUfS4LRgX_vqHDL324j_IUPmsDzoS7tmerB6mAHRCdP9BrTchXyXn4z07_4a5EPsTtzsR2VxwSkA7Fsh7cd_wsLLxMownq4oyhjUUjwD_tWVKw'
 alias fsize='du -sh * | sort -hr'
 alias g='git'
-alias i='cd "$ICLOUD/coding"'
+alias gitd='find . -name .git -type d'
+alias i='cd "$DRIVE/coding"'
 alias ip='echo "private: $(ipconfig getifaddr en0)/$(ipconfig getoption en0 subnet_mask | awk -F . '"'"'{print ($1==255)*8+($2==255)*8+($3==255)*8+($4==255)*8}'"'"')\npublic:  $(dig +short myip.opendns.com @resolver1.opendns.com)/32"'
 alias l='ls -AFG'
 alias nca='nctl auth set-project'
@@ -65,6 +66,6 @@ alias scov='open coverage/index.html'
 alias sqlite='sqlite3'
 alias stablediff='cd $HOME/stable-diffusion-webui && ./webui.sh --no-half'
 alias svgo='bun -b x svgo -o out --multipass'
-alias treedir='tree . -ahno tree.txt -FI ".git|node_modules|tmp" --dirsfirst --du --sort=size'
+alias treed='tree . -ahno tree.txt -FI ".git|node_modules|tmp" --dirsfirst --du --sort=size'
 alias unhide='chflags -R 0 .'
 alias zshrc='code $HOME/.zshrc'

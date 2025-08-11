@@ -42,8 +42,10 @@
 [commit]
 	gpgsign = true
 [core]
-	editor = 'code --wait'
+	editor = code
 	excludesFile = {{HOME}}/.gitignore
+[credential]
+	helper = /usr/local/share/gcm-core/git-credential-manager
 [gpg]
 	format = openpgp
 	program = gpg
