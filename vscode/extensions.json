@@ -1,0 +1,27 @@
+{
+  "recommendations": [
+    "aaron-bond.better-comments",
+    "bierner.markdown-mermaid",
+    "bung87.vscode-gemfile",
+    "castwide.solargraph",
+    "eamodio.gitlens",
+    "esbenp.prettier-vscode",
+    "github.copilot",
+    "github.copilot-chat",
+    "golang.go",
+    "karunamurti.haml",
+    "qwtel.sqlite-viewer",
+    "rangav.vscode-thunder-client",
+    "ruiquelhas.vscode-lowercase",
+    "rust-lang.rust-analyzer",
+    "shopify.ruby-lsp",
+    "sianglim.slim",
+    "tamasfe.even-better-toml",
+    "techer.open-in-browser",
+    "timonwong.shellcheck",
+    "tomoki1207.pdf",
+    "tyriar.sort-lines",
+    "visualstudioexptteam.vscodeintellicode",
+    "yzhang.markdown-all-in-one"
+  ]
+}
