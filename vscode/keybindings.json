@@ -128,5 +128,13 @@
     "key": "alt+cmd+down",
     "command": "-editor.action.insertCursorBelow",
     "when": "editorTextFocus"
+  },
+  {
+    "key": "shift+alt+l",
+    "command": "extension.changeCase.lower"
+  },
+  {
+    "key": "shift+alt+u",
+    "command": "extension.changeCase.upper"
   }
 ]

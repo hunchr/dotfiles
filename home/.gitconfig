@@ -23,19 +23,20 @@
 	pr = pull -r origin
 	prd = !git pull -r origin develop || fork .
 	prm = !git pull -r origin "$(git branch --format '%(refname:short)' -l main master)" || fork .
-	pt = push origin tag
 	r = reset
 	r1 = reset HEAD~1
 	r2 = reset HEAD~2
 	rd = reset origin/develop
 	rg = remote get-url origin
+	rh = reset --hard
 	rma = !git reset "origin/$(git branch --format '%(refname:short)' -l main master)"
 	rp = repack -adf --depth=250 --window=250
 	rs = remote set-url origin
-	s = show
+	s = status
+	sh = show
 	sl = shortlog -ens
 	sw = switch --orphan
-	t = tag
+	t = !git tag "$1" && git push origin tag "$1"
 	w = config --get user.email
 [checkout]
 	defaultRemote = origin

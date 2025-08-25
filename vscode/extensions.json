@@ -12,7 +12,6 @@
     "karunamurti.haml",
     "qwtel.sqlite-viewer",
     "rangav.vscode-thunder-client",
-    "ruiquelhas.vscode-lowercase",
     "rust-lang.rust-analyzer",
     "shopify.ruby-lsp",
     "sianglim.slim",
@@ -22,6 +21,7 @@
     "tomoki1207.pdf",
     "tyriar.sort-lines",
     "visualstudioexptteam.vscodeintellicode",
+    "wmaurer.change-case",
     "yzhang.markdown-all-in-one"
   ]
 }
