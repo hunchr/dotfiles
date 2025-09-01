@@ -10,6 +10,7 @@
 	cfg = !code {{HOME}}/.gitconfig
 	cfgw = !code {{HOME}}/.gitconfig.work
 	cl = clone
+	cls = clone --depth=1
 	cm = !git checkout "$(git branch --format '%(refname:short)' -l main master)"
 	co = !TZ=UTC git commit -S -m
 	d = !git diff $(git rev-parse HEAD) origin/HEAD --name-status
@@ -32,11 +33,13 @@
 	rma = !git reset "origin/$(git branch --format '%(refname:short)' -l main master)"
 	rp = repack -adf --depth=250 --window=250
 	rs = remote set-url origin
-	s = status
-	sh = show
+	s = show
 	sl = shortlog -ens
+	ss = show --compact-summary --stat=80
+	st = status
 	sw = switch --orphan
 	t = !git tag "$1" && git push origin tag "$1"
+	tl = tag -l --sort=-v:refname
 	w = config --get user.email
 [checkout]
 	defaultRemote = origin
@@ -45,6 +48,7 @@
 [core]
 	editor = code
 	excludesFile = {{HOME}}/.gitignore
+	pager = cat
 [credential]
 	helper = /usr/local/share/gcm-core/git-credential-manager
 [gpg]
@@ -52,8 +56,6 @@
 	program = gpg
 [init]
 	defaultBranch = main
-[pager]
-	branch = false
 [pull]
 	rebase = true
 [push]
