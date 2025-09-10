@@ -26,6 +26,7 @@ eval "$(/opt/homebrew/bin/mise activate zsh)"
 alias b='bun run'
 alias be='bundle exec'
 alias bi='bundle install'
+alias brewup='brew up && brew upgrade --greedy && brew cleanup'
 alias bu='bundle update'
 alias c='code'
 alias dcd='docker compose down'
