@@ -16,7 +16,7 @@
 	d = !git diff $(git rev-parse HEAD) origin/HEAD --name-status
 	db = branch -D
 	f = !git fetch -p origin && git for-each-ref --format='%(refname:short) %(upstream:track)' | awk '$2 == \"[gone]\" {print $1}' | xargs -r git branch -D
-	fa = git fetch -p --all
+	fa = fetch -p --all
 	l = log --oneline --max-count=100
 	ld = log --date=format:'%Y-%m-%d' --pretty=format:'%h %ad %s'
 	p = push
