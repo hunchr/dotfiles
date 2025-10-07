@@ -3,44 +3,44 @@
 [alias]
 	a = add
 	aa = add .
-	b = branch -a --format='%(HEAD) %(refname:short) %(color:black)(%(committerdate:relative))'
+	b = branch -a --format='%(HEAD) %(refname:short) %(color:black)(%(authordate:relative), %(authorname))'
 	c = checkout
 	cb = checkout -b
 	cd = checkout develop
 	cfg = !code {{HOME}}/.gitconfig
-	cfgw = !code {{HOME}}/.gitconfig.work
 	cl = clone
 	cls = clone --depth=1
-	cm = !git checkout "$(git branch --format '%(refname:short)' -l main master)"
+	cm = !git checkout "$(git main)"
 	co = !TZ=UTC git commit -S -m
-	d = !git diff $(git rev-parse HEAD) origin/HEAD --name-status
+	d = diff --name-status origin/HEAD
 	db = branch -D
 	f = !git fetch -p origin && git for-each-ref --format='%(refname:short) %(upstream:track)' | awk '$2 == \"[gone]\" {print $1}' | xargs -r git branch -D
 	fa = fetch -p --all
-	l = log --oneline --max-count=100
-	ld = log --date=format:'%Y-%m-%d' --pretty=format:'%h %ad %s'
+	l = log --date=format:'%Y-%m-%d' --pretty=format:'%C(yellow)%h%Creset %s %C(black)(%ad, %aN)'
+	main = branch -l main master --format='%(refname:short)'
 	p = push
 	pf = push -f
 	pl = pull
 	pr = pull -r origin
-	prd = !git pull -r origin develop || fork .
-	prm = !git pull -r origin "$(git branch --format '%(refname:short)' -l main master)" || fork .
+	prd = pull -r origin develop
+	prm = !git pull -r origin "$(git main)"
 	r = reset
 	r1 = reset HEAD~1
 	r2 = reset HEAD~2
 	rd = reset origin/develop
 	rg = remote get-url origin
 	rh = reset --hard
-	rma = !git reset "origin/$(git branch --format '%(refname:short)' -l main master)"
+	rma = !git reset "origin/$(git main)"
 	rp = repack -adf --depth=250 --window=250
 	rs = remote set-url origin
 	s = show
+	sc = switch -c
 	sl = shortlog -ens
 	ss = show --compact-summary --stat=80
 	st = status
 	sw = switch --orphan
-	t = !git tag "$1" && git push origin tag "$1"
-	tl = tag -l --sort=-v:refname
+	t = tag -l --format='%(refname:short) %(color:black)(%(creatordate:format:%Y-%m-%d))' --sort=-v:refname
+	tp = !git tag "$1" && git push origin tag "$1"
 	w = config --get user.email
 [checkout]
 	defaultRemote = origin
