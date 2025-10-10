@@ -2,8 +2,8 @@ fpath+=$HOME/.zfunc
 plugins=(fast-syntax-highlighting zsh-autocomplete)
 
 export BUN_INSTALL=$HOME/.bun
-export CPATH=/usr/local/include:/opt/homebrew/include:/opt/homebrew/opt/llvm/include:/opt/homebrew/opt/postgresql@17/include:$CPATH
-export CPPFLAGS='-I/opt/homebrew/opt/llvm/include -I/opt/homebrew/opt/sqlite/include -I/opt/homebrew/opt/postgresql@17/include'
+export CPATH=/usr/local/include:/opt/homebrew/include:/opt/homebrew/opt/llvm/include:/opt/homebrew/opt/postgresql@18/include:$CPATH
+export CPPFLAGS='-I/opt/homebrew/opt/llvm/include -I/opt/homebrew/opt/sqlite/include -I/opt/homebrew/opt/postgresql@18/include'
 export DISABLE_UNTRACKED_FILES_DIRTY=true
 export DISPLAY=localhost:0
 export DO_NOT_TRACK=1
@@ -11,11 +11,11 @@ export DRIVE="$HOME/Library/Mobile Documents/com~apple~CloudDocs/home"
 export EDITOR='code --wait'
 export FONTAWESOME_NPM_AUTH_TOKEN={{FONTAWESOME_NPM_AUTH_TOKEN}}
 export GPG_TTY=$(tty)
+export HOMEBREW_NO_ENV_HINTS=1
 export LANG=en_US.UTF-8
-export LDFLAGS='-L/opt/homebrew/opt/llvm/lib/c++ -L/opt/homebrew/opt/sqlite/lib -L/opt/homebrew/opt/postgresql@17/lib'
-export LIBRARY_PATH=/usr/local/lib:/opt/homebrew/lib:/opt/homebrew/opt/postgresql@17/lib:/opt/homebrew/opt/mysql@8.4/lib:$LIBRARY_PATH
-export PATH=$DRIVE/coding/bin:$HOME/.cargo/bin:$HOME/go/bin:/opt/homebrew/opt/gnu-sed/libexec/gnubin:/opt/homebrew/opt/llvm/bin:/opt/homebrew/opt/sqlite/bin:/opt/homebrew/opt/postgresql@17/bin:$HOME/.bun/bin:$PATH
-export RUBYOPT=-W:deprecated
+export LDFLAGS='-L/opt/homebrew/opt/llvm/lib/c++ -L/opt/homebrew/opt/sqlite/lib -L/opt/homebrew/opt/postgresql@18/lib'
+export LIBRARY_PATH=/usr/local/lib:/opt/homebrew/lib:/opt/homebrew/opt/postgresql@18/lib:/opt/homebrew/opt/mysql@8.4/lib:$LIBRARY_PATH
+export PATH=$DRIVE/coding/bin:$HOME/.cargo/bin:$HOME/go/bin:/opt/homebrew/opt/gnu-sed/libexec/gnubin:/opt/homebrew/opt/llvm/bin:/opt/homebrew/opt/sqlite/bin:/opt/homebrew/opt/postgresql@18/bin:$HOME/.bun/bin:$PATH
 export TZ=UTC
 export ZSH=$HOME/.oh-my-zsh
 
