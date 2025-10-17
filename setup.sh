@@ -31,15 +31,20 @@ plugin() {
 
 # Install brew formulae and casks
 if [ "${1-}" = i ]; then
-  brew install --formula automake awscli bash bazel cmake coreutils deno \
-    docker exiftool fd ffmpeg findutils geckodriver gh git gnu-sed go graphviz \
-    handbrake jpeg jq julia kind libavif libyaml llvm mas mkcert mysql nctl \
-    ninja nmap parallel pdftk-java pinentry-mac postgresql@17 pygments redis \
-    rustup s3cmd shellcheck tree vips wget yarn yq zsh
-  brew install --cask 1password-cli chromedriver docker fork google-chrome \
-    handbrake-app libreoffice librewolf obs pgadmin4 proton-drive proton-pass \
-    protonvpn qbittorrent qlvideo raycast signal slack spotify tunnelblick vlc \
-    whatsapp
+  brew install --formula act automake awscli bash bazel bombardier cmake \
+    coreutils deno docker dotnet e2fsprogs elixir-ls exiftool fd ffmpeg \
+    findutils fswatch geckodriver gh git gnu-sed gnu-tar go graphviz \
+    heroku/brew/heroku httpd hyfetch hyperfine jpeg jq jwt-cli kind kubectx \
+    libyaml llvm mas mise mkcert mysql ninech/taps/nctl ninja nmap nuget \
+    ollama pdftk-java pgvector pinentry-mac postgresql@18 pygments redis \
+    rustup s3cmd semaphoreci/tap/sem shellcheck tree valkey vips viu wabt wget \
+    xcodegen yarn yq yt-dlp zsh
+
+  brew install --cask 1password-cli android-studio chromedriver docker-desktop \
+    fork git-credential-manager google-chrome handbrake-app libreoffice \
+    librewolf ngrok obs pgadmin4 proton-drive proton-pass protonvpn \
+    qbittorrent qlvideo raycast signal slack spotify stolendata-mpv \
+    thunderbird tunnelblick vlc whatsapp
 fi
 
 # Copy config files to home directory

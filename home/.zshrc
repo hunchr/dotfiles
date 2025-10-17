@@ -1,6 +1,7 @@
 fpath+=$HOME/.zfunc
 plugins=(fast-syntax-highlighting zsh-autocomplete)
 
+export ANDROID_HOME=$HOME/Library/Android/sdk
 export BUN_INSTALL=$HOME/.bun
 export CPATH=/usr/local/include:/opt/homebrew/include:/opt/homebrew/opt/llvm/include:/opt/homebrew/opt/postgresql@18/include:$CPATH
 export CPPFLAGS='-I/opt/homebrew/opt/llvm/include -I/opt/homebrew/opt/sqlite/include -I/opt/homebrew/opt/postgresql@18/include'
@@ -12,9 +13,11 @@ export EDITOR='code --wait'
 export FONTAWESOME_NPM_AUTH_TOKEN={{FONTAWESOME_NPM_AUTH_TOKEN}}
 export GPG_TTY=$(tty)
 export HOMEBREW_NO_ENV_HINTS=1
+export JAVA_HOME='/Applications/Android Studio.app/Contents/jbr/Contents/Home'
 export LANG=en_US.UTF-8
 export LDFLAGS='-L/opt/homebrew/opt/llvm/lib/c++ -L/opt/homebrew/opt/sqlite/lib -L/opt/homebrew/opt/postgresql@18/lib'
 export LIBRARY_PATH=/usr/local/lib:/opt/homebrew/lib:/opt/homebrew/opt/postgresql@18/lib:/opt/homebrew/opt/mysql@8.4/lib:$LIBRARY_PATH
+export NDK_HOME="$ANDROID_HOME/ndk/$(ls -1 $ANDROID_HOME/ndk)"
 export PATH=$DRIVE/coding/bin:$HOME/.cargo/bin:$HOME/go/bin:/opt/homebrew/opt/gnu-sed/libexec/gnubin:/opt/homebrew/opt/llvm/bin:/opt/homebrew/opt/sqlite/bin:/opt/homebrew/opt/postgresql@18/bin:$HOME/.bun/bin:$PATH
 export TZ=UTC
 export ZSH=$HOME/.oh-my-zsh
