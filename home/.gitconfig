@@ -16,7 +16,8 @@
 	db = branch -D
 	f = !git fetch -p origin && git for-each-ref --format='%(refname:short) %(upstream:track)' | awk '$2 == \"[gone]\" {print $1}' | xargs -r git branch -D
 	fa = fetch -p --all
-	l = log --date=format:'%Y-%m-%d' --pretty=format:'%C(yellow)%h%Creset %s %C(black)(%ad, %aN)'
+	g = log --regexp-ignore-case -pS
+	l = log --date=format:'%Y-%m-%d' --pretty=format:'%C(black)%ad %C(yellow)%h%Creset %s %C(black)(%aN)'
 	main = branch -l main master --format='%(refname:short)'
 	p = push
 	pf = push -f

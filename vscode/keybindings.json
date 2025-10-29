@@ -136,5 +136,10 @@
   {
     "key": "shift+alt+u",
     "command": "extension.changeCase.upper"
+  },
+  {
+    "key": "shift+cmd+.",
+    "command": "-breadcrumbs.toggleToOn",
+    "when": "!config.breadcrumbs.enabled"
   }
 ]

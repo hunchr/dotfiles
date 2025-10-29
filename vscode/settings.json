@@ -1,5 +1,6 @@
 {
   "breadcrumbs.enabled": false,
+  "chat.mcp.gallery.enabled": true,
   "debug.onTaskErrors": "debugAnyway",
   "diffEditor.ignoreTrimWhitespace": false,
   "diffEditor.renderSideBySide": true,
@@ -18,6 +19,7 @@
   "editor.stickyScroll.enabled": false,
   "editor.stickyScroll.scrollWithEditor": false,
   "editor.tabSize": 2,
+  "editor.unusualLineTerminators": "off",
   "editor.wordSeparators": "`~!@#$%^&*()=+[{]}\\|;:'\",.<>/?",
   "editor.wordWrap": "on",
   "emmet.showSuggestionsAsSnippets": true,
@@ -35,6 +37,8 @@
   "git.openRepositoryInParentFolders": "never",
   "git.path": "/opt/homebrew/bin/git",
   "git.replaceTagsWhenPull": true,
+  "github.copilot.chat.copilotDebugCommand.enabled": false,
+  "inlineChat.holdToSpeech": false,
   "javascript.updateImportsOnFileMove.enabled": "always",
   "search.smartCase": true,
   "security.promptForLocalFileProtocolHandling": false,
@@ -44,7 +48,7 @@
   "terminal.integrated.cursorStyle": "line",
   "terminal.integrated.cursorWidth": 2,
   "terminal.integrated.enableMultiLinePasteWarning": "never",
-  "terminal.integrated.fontFamily": "MesloLGS NF, Fira Code, monospace",
+  "terminal.integrated.fontFamily": "MesloLGS NF, monospace",
   "terminal.integrated.fontSize": 14,
   "terminal.integrated.scrollback": 10000,
   "terminal.integrated.shellIntegration.enabled": false,
@@ -52,6 +56,7 @@
   "window.confirmSaveUntitledWorkspace": false,
   "workbench.editor.empty.hint": "hidden",
   "workbench.editorAssociations": { "*.svg": "default" },
+  "workbench.secondarySideBar.defaultVisibility": "hidden",
   "workbench.startupEditor": "none",
 
   // Copilot
@@ -59,6 +64,8 @@
   "github.copilot.enable": { "*": false },
 
   // Formatters
+  "[elixir]": { "editor.defaultFormatter": "JakeBecker.elixir-ls" },
+  "[go]": { "editor.defaultFormatter": "golang.go" },
   "[ruby]": { "editor.defaultFormatter": "Shopify.ruby-lsp" },
   "[rust]": { "editor.defaultFormatter": "rust-lang.rust-analyzer" },
   "[toml]": { "editor.defaultFormatter": "tamasfe.even-better-toml" },
@@ -70,8 +77,10 @@
   "rubyLsp.formatter": "rubocop_internal",
 
   // GitLens
-  "gitlens.views.searchAndCompare.avatars": false,
-  "gitlens.views.searchAndCompare.files.layout": "tree",
+  "gitlens.codeLens.authors.enabled": false,
+  "gitlens.codeLens.recentChange.enabled": false,
+  "gitlens.plusFeatures.enabled": false,
+  "gitlens.showWhatsNewAfterUpgrades": false,
   "gitlens.views.scm.grouped.views": {
     "branches": false,
     "commits": false,
@@ -84,6 +93,8 @@
     "tags": false,
     "worktrees": false
   },
+  "gitlens.views.searchAndCompare.avatars": false,
+  "gitlens.views.searchAndCompare.files.layout": "tree",
 
   // Ruby
   "emmet.includeLanguages": { "erb": "html" },
