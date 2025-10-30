@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+CMD=${1-.}
+NAME=${2-container}
+TAG=${3-latest}
+
+container_id() {
+  docker ps -aqf name="$NAME"
+}
+
+cmd() {
+  case $1 in
+    b | build)
+      [[ -z $(container_id) ]] || cmd rm
+      docker build -t "$NAME:$TAG" .
+      docker create --name "$NAME" "$NAME:$TAG";;
+    r | run)
+      [[ -n $(container_id) ]] || cmd build
+      docker start "$NAME" > /dev/null
+      echo running: "$NAME";;
+    s | stop)
+      [[ -z $(container_id) ]] || docker stop "$NAME" > /dev/null
+      echo stopped: "$NAME";;
+    rm | remove)
+      [[ -z $(container_id) ]] || docker rm -f "$NAME" > /dev/null
+      [[ -z "$(docker images -q "$NAME:$TAG")" ]] || docker rmi -f "$NAME:$TAG" > /dev/null
+      echo removed: "$NAME";;
+    sh)
+      [[ -n "$(docker ps -qf name="$NAME")" ]] || cmd run
+      docker exec -u root -it "$NAME" sh;;
+    *)
+      echo error: command not found;
+      exit 1;;
+  esac
+}
+
+cd "$(pwd)"
+cmd "$CMD"

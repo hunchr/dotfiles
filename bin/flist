@@ -1,0 +1,62 @@
+#!/usr/bin/env bun
+import { argv, exit } from "node:process"
+import { existsSync, readdirSync, statSync } from "node:fs"
+
+const ignored = [
+  ".DS_Store",
+  ".git",
+  ".idea",
+  ".ruby-lsp",
+  "coverage",
+  "node_modules",
+  "tmp",
+]
+
+const dirSize = (dir = ".") => {
+  const dirs = []
+  const units = ["B", "K", "M", "G"]
+
+  if (!existsSync(dir) || !statSync(dir).isDirectory()) {
+    console.log("no such directory")
+    exit(1)
+  }
+
+  ;(function traverse(dir) {
+    let bytes = 0
+
+    for (let path of readdirSync(dir)) {
+      if (!ignored.includes(path)) {
+        path = `${dir}/${path}`
+        const stat = statSync(path)
+
+        if (stat.isFile()) {
+          bytes += stat.size
+        } else if (stat.isDirectory()) {
+          bytes += traverse(path)
+        }
+      }
+    }
+
+    dirs.push([dir, bytes])
+    return bytes
+  })(dir)
+
+  for (let [path, bytes] of dirs.sort(([, a], [, b]) => b - a)) {
+    let i = 0
+
+    while (bytes >= 1024) {
+      bytes /= 1024
+      i++
+    }
+
+    const size = (
+      i === 0 ? bytes : bytes >= 10 ? Math.round(bytes) : bytes.toFixed(1)
+    )
+      .toString()
+      .padStart(4, " ")
+
+    console.log(`${size}${units[i]}    ${path.replace(/^.\//, "")}`)
+  }
+}
+
+dirSize(argv[2])

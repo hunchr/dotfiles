@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+set -eo pipefail
+
+if [ ! -e "$1" ] || [ -z "$2" ]; then
+  echo 'usage: bckp <file> <passphrase>'
+  exit 1
+fi
+
+cd "$(dirname -- "$1")"
+file="$(basename -- "$1")"
+
+if [ "${file##*.}" == enc ]; then
+  echo "decrypting $file"
+
+  openssl aes-256-cbc -d -in "$file" -md sha256 -pass "pass:$2" -pbkdf2 \
+    | zstd -dqT0 \
+    | tar -xf -
+else
+  out=$file-$(date +%Y%m%d).zst.enc
+  echo "encrypting $file -> $out"
+
+  tar -cf - "$file" \
+    | zstd -19 -qT0 \
+    | openssl aes-256-cbc -md sha256 -out "$out" -pass "pass:$2" -pbkdf2
+fi
