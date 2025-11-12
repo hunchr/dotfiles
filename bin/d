@@ -2,7 +2,7 @@
 set -euo pipefail
 
 CMD=${1-.}
-NAME=${2-container}
+NAME=${2-"$(basename "$(pwd)")"}
 TAG=${3-latest}
 
 container_id() {
