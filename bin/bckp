@@ -16,7 +16,7 @@ if [ "${file##*.}" == enc ]; then
     | zstd -dqT0 \
     | tar -xf -
 else
-  out=$file-$(date +%Y%m%d).zst.enc
+  out=$file-$(date +%Y%m%d).enc
   echo "encrypting $file -> $out"
 
   tar -cf - "$file" \
