@@ -3,6 +3,7 @@ idiomatic_version_file_enable_tools = ["node", "ruby"]
 
 [tools]
 elixir = "latest"
+java = "latest"
 node = "latest"
 python = "latest"
 ruby = "latest"

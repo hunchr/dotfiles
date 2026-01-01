@@ -19,7 +19,7 @@ export LANG=en_US.UTF-8
 export LDFLAGS='-L/opt/homebrew/opt/llvm/lib/c++ -L/opt/homebrew/opt/sqlite/lib -L/opt/homebrew/opt/postgresql@18/lib'
 export LIBRARY_PATH=/usr/local/lib:/opt/homebrew/lib:/opt/homebrew/opt/postgresql@18/lib:/opt/homebrew/opt/mysql@8.4/lib:$LIBRARY_PATH
 export NDK_HOME="$ANDROID_HOME/ndk/$(ls -1 $ANDROID_HOME/ndk)"
-export PATH="{{PWD}}/bin:$HOME/.cargo/bin:$HOME/go/bin:/opt/homebrew/opt/llvm/bin:/opt/homebrew/opt/sqlite/bin:/opt/homebrew/opt/postgresql@18/bin:$HOME/.bun/bin:$PATH"
+export PATH="{{PWD}}/bin:$HOME/.cargo/bin:$HOME/go/bin:/opt/homebrew/opt/llvm/bin:/opt/homebrew/opt/sqlite/bin:/opt/homebrew/opt/postgresql@18/bin:/opt/homebrew/opt/curl/bin:$HOME/.bun/bin:$PATH"
 export TZ=UTC
 export ZSH=$HOME/.oh-my-zsh
 
@@ -41,6 +41,7 @@ alias dce='docker exec -it "$(docker ps -qf name=app-1 -f name=web-1)" bash'
 alias dco='docker compose'
 alias dcu='docker compose up -d'
 alias dl='cd $HOME/Downloads'
+alias dns='sudo dscacheutil -flushcache && sudo killall -HUP mDNSResponder'
 alias dotf='code "{{PWD}}"'
 alias e='code'
 alias f='if [ -f bin/fastcheck ]; then bin/fastcheck; else bin/lint; fi'
@@ -52,6 +53,7 @@ alias gitd='find . -name .git -type d'
 alias i='cd "$DRIVE/coding"'
 alias ip='echo "private: $(ipconfig getifaddr en0)/$(ipconfig getoption en0 subnet_mask | awk -F . '"'"'{print ($1==255)*8+($2==255)*8+($3==255)*8+($4==255)*8}'"'"')\npublic:  $(dig +short myip.opendns.com @resolver1.opendns.com)/32"'
 alias l='ls -AFG'
+alias launch='ls {/Library/LaunchAgents,/Library/LaunchDaemons,$HOME/Library/LaunchAgents}'
 alias m='bin/rails db:migrate'
 alias my='code $HOME/.my.cnf'
 alias n='ln -s $HOME/node_modules .'
