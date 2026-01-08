@@ -3,10 +3,8 @@
     "aaron-bond.better-comments",
     "bierner.markdown-mermaid",
     "bung87.vscode-gemfile",
-    "castwide.solargraph",
     "eamodio.gitlens",
     "esbenp.prettier-vscode",
-    "github.copilot",
     "github.copilot-chat",
     "github.vscode-pull-request-github",
     "golang.go",
@@ -14,7 +12,9 @@
     "karunamurti.haml",
     "qwtel.sqlite-viewer",
     "rangav.vscode-thunder-client",
+    "redhat.vscode-xml",
     "rust-lang.rust-analyzer",
+    "samuelcolvin.jinjahtml",
     "shopify.ruby-lsp",
     "sianglim.slim",
     "tamasfe.even-better-toml",
@@ -22,7 +22,6 @@
     "timonwong.shellcheck",
     "tomoki1207.pdf",
     "tyriar.sort-lines",
-    "visualstudioexptteam.vscodeintellicode",
     "wmaurer.change-case",
     "yzhang.markdown-all-in-one"
   ]
