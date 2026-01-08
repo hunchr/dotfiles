@@ -30,7 +30,7 @@ plugin() {
 }
 
 # Install brew formulae and casks
-if [ "${1-}" = i ]; then
+if [ "${1-}" = init ]; then
   # Output of `brew leaves | tr '\n' ' '`
   brew install --formula act automake awscli bash bazel bombardier cmake \
     coreutils curl deno docker-completion e2fsprogs elixir-ls exiftool fd \
