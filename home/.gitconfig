@@ -19,7 +19,8 @@
   f = !git fetch -p origin && git for-each-ref --format='%(refname:short) %(upstream:track)' | awk '$2 == \"[gone]\" {print $1}' | xargs -r git branch -D
   fa = fetch -p --all
   g = log --regexp-ignore-case -pS
-  l = log --date=format:'%Y-%m-%d' --pretty=format:'%C(black)%ad %C(yellow)%h%Creset %s %C(black)(%aN)'
+  l = log -P --author='^(?!(.+\\[bot\\])).+$' --date=format:'%Y-%m-%d' --pretty=format:'%C(black)%ad %C(yellow)%h%Creset %s %C(black)(%aN)'
+  la = log --date=format:'%Y-%m-%d' --pretty=format:'%C(black)%ad %C(yellow)%h%Creset %s %C(black)(%aN)'
   main = branch -l main master --format='%(refname:short)'
   p = push
   pf = push -f
@@ -32,6 +33,8 @@
   r2 = reset HEAD~2
   r3 = reset HEAD~3
   rb = rebase
+  rba = rebase --abort
+  rbo = rebase --onto origin/main
   rd = reset origin/develop
   rg = remote get-url origin
   rh = reset --hard

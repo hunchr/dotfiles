@@ -51,6 +51,7 @@ $zcompdump_revision
 $zcompdump_fpath
 EOF
 fi
+
 unset zcompdump_revision zcompdump_fpath zcompdump_refresh
 
 # zcompile the completion dump file if the .zwc is older or missing.
@@ -77,9 +78,7 @@ unset lib_file plugin
 
 LS_COLORS='di=1;36:ln=35:so=32:pi=33:ex=31:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43'
 
-PROMPT="%{$fg[blue]%}%c%{$reset_color%}"
-PROMPT+=' $(git_prompt_info)'
-PROMPT+="%(?:%{$fg[green]%}%1{❯%}:%{$fg[red]%}%1{❯%})%{$reset_color%} "
+PROMPT="%{$fg[blue]%}%c%{$reset_color%} \$(git_prompt_info)%(?:%{$fg[green]%}%1{❯%}:%{$fg[red]%}%1{❯%})%{$reset_color%} "
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[green]%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%} "
 ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[yellow]%}%1{*%}"
