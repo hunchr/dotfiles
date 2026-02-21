@@ -20,6 +20,7 @@ export LDFLAGS='-L/opt/homebrew/opt/llvm/lib/c++ -L/opt/homebrew/opt/sqlite/lib 
 export LIBRARY_PATH=/usr/local/lib:/opt/homebrew/lib:/opt/homebrew/opt/postgresql@18/lib:/opt/homebrew/opt/mysql@8.4/lib:$LIBRARY_PATH
 export NDK_HOME="$ANDROID_HOME/ndk/$(ls -1 $ANDROID_HOME/ndk)"
 export PATH="{{PWD}}/bin:$HOME/.cargo/bin:$HOME/go/bin:/opt/homebrew/opt/llvm/bin:/opt/homebrew/opt/sqlite/bin:/opt/homebrew/opt/postgresql@18/bin:/opt/homebrew/opt/curl/bin:$HOME/.bun/bin:$PATH"
+export RUBYOPT=--enable=yjit
 export TZ=UTC
 export ZSH=$HOME/.oh-my-zsh
 
@@ -46,6 +47,7 @@ alias dl='cd $HOME/Downloads'
 alias dns='sudo dscacheutil -flushcache && sudo killall -HUP mDNSResponder'
 alias dotf='code "{{PWD}}"'
 alias e='code'
+alias er='code -r'
 alias f='if [ -f bin/fastcheck ]; then bin/fastcheck; else bin/lint; fi'
 alias ffcolor='open https://color.firefox.com/?theme=XQAAAAJ6AgAAAAAAAABBKYhm849SCicxcUEYWXcGHf3p79EhVPQ41r7xcfZ9PTtZXOCodCzcptzyX3upVH9adVuj2mXdFr63EzkgliO-MRy-QJvv3UOz8NB6_XLCNEkN6pWzKrg907l38HgqznJdbpzuM6NIBQtjTzdvmSxavrK7qGahlGQ5xWlQEvBlqV0qvHpAum8iaEDF5LZI3giZMaZeLTd8lr9PtdYjRFPqmUfS4LRgX_vqHDL324j_IUPmsDzoS7tmerB6mAHRCdP9BrTchXyXn4z07_4a5EPsTtzsR2VxwSkA7Fsh7cd_wsLLxMownq4oyhjUUjwD_tWVKw'
 alias fn='find . -name'
@@ -67,6 +69,7 @@ alias ncp='nctl auth set-project'
 alias neofetch='neowofetch --config $HOME/neofetch.conf'
 alias nmp='nmap -Pn -p 1-65535 $(ipconfig getifaddr en0)'
 alias pf='bun -b x prettier --log-level warn -w .'
+alias pg_dat='psql -c "SELECT datcollate, datctype FROM pg_database WHERE datname = current_database();" -d'
 alias pg_size='psql -c "SELECT relname AS table_name, pg_size_pretty(pg_relation_size(relid)) AS size FROM pg_catalog.pg_statio_user_tables ORDER BY pg_relation_size(relid) DESC;" -d'
 alias pgrestore='pg_restore -OU $USER -cvh localhost latest.dump -d'
 alias pinentry='pinentry-mac'
@@ -80,7 +83,7 @@ alias rp='bundle exec rspec'
 alias rr='bin/rails routes | grep'
 alias rt='bin/rails test'
 alias s3='code $HOME/.aws/credentials'
-alias s="rg -.Sg '!.git/'"
+alias s="rg -.pSC 2 --"
 alias scov='open coverage/index.html'
 alias sq='sqlite3'
 alias svgo='bun -b x svgo --multipass -o out -f'
