@@ -73,6 +73,7 @@ alias pg_dat='psql -c "SELECT datcollate, datctype FROM pg_database WHERE datnam
 alias pg_size='psql -c "SELECT relname AS table_name, pg_size_pretty(pg_relation_size(relid)) AS size FROM pg_catalog.pg_statio_user_tables ORDER BY pg_relation_size(relid) DESC;" -d'
 alias pgrestore='pg_restore -OU $USER -cvh localhost latest.dump -d'
 alias pinentry='pinentry-mac'
+alias q='exec zsh'
 alias quarantine='xattr -d com.apple.quarantine'
 alias r='bin/rails'
 alias rc='bundle exec rubocop'
@@ -80,11 +81,12 @@ alias rd="psql -d postgres -c \"SELECT pg_terminate_backend(pid) FROM pg_stat_ac
 alias rl='readlink -f'
 alias rlsp='gem i ruby-lsp solargraph'
 alias rp='bundle exec rspec'
-alias rr='bin/rails routes | grep'
+alias rr='bin/rails routes | rg -S'
 alias rt='bin/rails test'
 alias s3='code $HOME/.aws/credentials'
-alias s="rg -.pSC 2 --"
+alias s='rg -.pSC 2 --'
 alias scov='open coverage/index.html'
+alias sf='rg -. --files | rg -S'
 alias sq='sqlite3'
 alias svgo='bun -b x svgo --multipass -o out -f'
 alias t='bin/check'
@@ -93,3 +95,7 @@ alias unhide='chflags -R 0 .'
 alias up='brew up && brew upgrade --greedy && brew cleanup'
 alias v='[[ $(mullvad status) =~ Connected ]] && mullvad disconnect -w || (mullvad connect -w > /dev/null && mullvad status)'
 alias z='code $HOME/.zshrc'
+
+function o() {
+  open "https://github.com/$(grep -m 1 "$1" $HOME/.ghrepos)"
+}
