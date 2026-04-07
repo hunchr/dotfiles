@@ -48,7 +48,7 @@
   st = status
   sw = switch --orphan
   t = tag -l --format='%(refname:short) %(color:black)(%(creatordate:format:%Y-%m-%d))' --sort=-v:refname
-  tp = !git tag "$1" && git push origin tag "$1"
+  tp = "!f(){ git tag $1 && git push origin tag $1; }; f"
   w = config --get user.email
 [checkout]
   defaultRemote = origin

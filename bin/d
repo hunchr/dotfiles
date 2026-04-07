@@ -28,7 +28,7 @@ cmd() {
       echo removed: "$NAME";;
     sh)
       [[ -n "$(docker ps -qf name="$NAME")" ]] || cmd run
-      docker exec -u root -it "$NAME" sh;;
+      docker exec -u root -it "$NAME" bash;;
     *)
       echo error: command not found;
       exit 1;;
