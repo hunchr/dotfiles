@@ -1,4 +1,6 @@
 /.idea
 /.private
 
+/.claude/settings.local.json
+/CLAUDE.local.md
 .DS_Store
