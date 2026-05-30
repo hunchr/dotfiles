@@ -19,7 +19,7 @@ export LANG=en_US.UTF-8
 export LDFLAGS='-L/opt/homebrew/opt/llvm/lib/c++ -L/opt/homebrew/opt/sqlite/lib -L/opt/homebrew/opt/postgresql@18/lib'
 export LIBRARY_PATH=/usr/local/lib:/opt/homebrew/lib:/opt/homebrew/opt/postgresql@18/lib:/opt/homebrew/opt/mysql@8.4/lib:$LIBRARY_PATH
 export NDK_HOME="$ANDROID_HOME/ndk/$(ls -1 $ANDROID_HOME/ndk)"
-export PATH="{{PWD}}/bin:$HOME/.cargo/bin:$HOME/go/bin:/opt/homebrew/opt/llvm/bin:/opt/homebrew/opt/sqlite/bin:/opt/homebrew/opt/postgresql@18/bin:/opt/homebrew/opt/curl/bin:$HOME/.bun/bin:$PATH"
+export PATH="{{PWD}}/bin:/opt/homebrew/opt/rustup/bin:$HOME/.cargo/bin:$HOME/go/bin:/opt/homebrew/opt/llvm/bin:/opt/homebrew/opt/sqlite/bin:/opt/homebrew/opt/postgresql@18/bin:/opt/homebrew/opt/curl/bin:$HOME/.bun/bin:$PATH"
 export RUBYOPT=--enable=yjit
 export TZ=UTC
 export ZSH=$HOME/.oh-my-zsh
@@ -70,8 +70,10 @@ alias nco='nctl auth set-org'
 alias ncp='nctl auth set-project'
 alias neofetch='neowofetch --config $HOME/neofetch.conf'
 alias nmp='nmap -Pn -p 1-65535 $(ipconfig getifaddr en0)'
+alias p='psql -d postgres'
 alias pf='bun -b x prettier --log-level warn -w .'
 alias pg_dat='psql -c "SELECT datcollate, datctype FROM pg_database WHERE datname = current_database();" -d'
+alias pg_schema='pg_dump -Osf schema.sql'
 alias pg_size='psql -c "SELECT relname AS table_name, pg_size_pretty(pg_relation_size(relid)) AS size FROM pg_catalog.pg_statio_user_tables ORDER BY pg_relation_size(relid) DESC;" -d'
 alias pgrestore='pg_restore -OU $USER -cvh localhost latest.dump -d'
 alias pinentry='pinentry-mac'

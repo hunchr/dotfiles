@@ -45,6 +45,7 @@
   s = show
   sc = switch -c
   sl = shortlog -ens
+  sq = show -q
   ss = show --compact-summary --stat=80
   st = status
   sw = switch --orphan
