@@ -3,4 +3,5 @@
 
 /.claude/settings.local.json
 /CLAUDE.local.md
+/rustc-ice-*.txt
 .DS_Store
