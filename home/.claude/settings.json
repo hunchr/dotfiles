@@ -1,0 +1,41 @@
+{
+  "autoMemoryEnabled": false,
+  "autoUploadSessions": false,
+  "defaultMode": "acceptEdits",
+  "effortLevel": "xhigh",
+  "feedbackSurveyRate": 0,
+  "fileCheckpointingEnabled": false,
+  "model": "opus",
+  "permissions": {
+    "allow": [
+      "Bash(* --help)",
+      "Bash(* --version)",
+      "Bash(ansible-lint *)",
+      "Bash(bun *)",
+      "Bash(cargo *)",
+      "Bash(grep *)",
+      "Bash(mise exec *)",
+      "Bash(mise x *)",
+      "Bash(rg *)",
+      "Bash(unset *)",
+      "Read(~/.local/share/mise/**)",
+      "Read(~/node_modules/**)"
+    ],
+    "ask": ["Bash(rm *)"],
+    "deny": [
+      "Bash(bun publish)",
+      "Bash(bun publish *)",
+      "Bash(cargo publish)",
+      "Bash(cargo publish *)",
+      "Bash(cargo yank)",
+      "Bash(cargo yank *)",
+      "Bash(env)",
+      "Bash(git push)",
+      "Bash(git push *)",
+      "Bash(printenv)",
+      "Read(/.env)",
+      "Read(/.git/**)",
+      "Read(/.private/**)"
+    ]
+  }
+}
