@@ -11,7 +11,6 @@ export DISPLAY=localhost:0
 export DO_NOT_TRACK=1
 export DRIVE="$HOME/Library/Mobile Documents/com~apple~CloudDocs/home"
 export EDITOR='code --wait'
-export FONTAWESOME_NPM_AUTH_TOKEN={{FONTAWESOME_NPM_AUTH_TOKEN}}
 export GPG_TTY=$(tty)
 export HOMEBREW_NO_ENV_HINTS=1
 export JAVA_HOME='/Applications/Android Studio.app/Contents/jbr/Contents/Home'
@@ -50,7 +49,7 @@ alias dotf='code "{{PWD}}"'
 alias e='code'
 alias er='code -r'
 alias f='if [ -f bin/lint ]; then bin/lint; else bin/fastcheck; fi'
-alias ffcolor='open https://color.firefox.com/?theme=XQAAAAJ6AgAAAAAAAABBKYhm849SCicxcUEYWXcGHf3p79EhVPQ41r7xcfZ9PTtZXOCodCzcptzyX3upVH9adVuj2mXdFr63EzkgliO-MRy-QJvv3UOz8NB6_XLCNEkN6pWzKrg907l38HgqznJdbpzuM6NIBQtjTzdvmSxavrK7qGahlGQ5xWlQEvBlqV0qvHpAum8iaEDF5LZI3giZMaZeLTd8lr9PtdYjRFPqmUfS4LRgX_vqHDL324j_IUPmsDzoS7tmerB6mAHRCdP9BrTchXyXn4z07_4a5EPsTtzsR2VxwSkA7Fsh7cd_wsLLxMownq4oyhjUUjwD_tWVKw'
+alias ffcolor='open "https://color.firefox.com/?theme=XQAAAAJ6AgAAAAAAAABBKYhm849SCicxcUEYWXcGHf3p79EhVPQ41r7xcfZ9PTtZXOCodCzcptzyX3upVH9adVuj2mXdFr63EzkgliO-MRy-QJvv3UOz8NB6_XLCNEkN6pWzKrg907l38HgqznJdbpzuM6NIBQtjTzdvmSxavrK7qGahlGQ5xWlQEvBlqV0qvHpAum8iaEDF5LZI3giZMaZeLTd8lr9PtdYjRFPqmUfS4LRgX_vqHDL324j_IUPmsDzoS7tmerB6mAHRCdP9BrTchXyXn4z07_4a5EPsTtzsR2VxwSkA7Fsh7cd_wsLLxMownq4oyhjUUjwD_tWVKw"'
 alias fn='find . -name'
 alias fsize='du -sh * | sort -hr'
 alias g='git'
@@ -63,11 +62,6 @@ alias lsl='ls {/Library/LaunchAgents,/Library/LaunchDaemons,$HOME/Library/Launch
 alias m='bin/rails db:migrate'
 alias my='code $HOME/.my.cnf'
 alias n='ln -s $HOME/node_modules .'
-alias nce='nctl exec app'
-alias ncg='nctl get app'
-alias ncl='nctl logs app'
-alias nco='nctl auth set-org'
-alias ncp='nctl auth set-project'
 alias neofetch='neowofetch --config $HOME/neofetch.conf'
 alias nmp='nmap -Pn -p 1-65535 $(ipconfig getifaddr en0)'
 alias p='psql -d postgres'
@@ -109,7 +103,3 @@ alias unhide='chflags -R 0 .'
 alias up='brew up && brew upgrade -gy && brew cleanup'
 alias v='[[ $(mullvad status) =~ Connected ]] && mullvad disconnect -w || (mullvad connect -w > /dev/null && mullvad status)'
 alias z='code $HOME/.zshrc'
-
-function o() {
-  open "https://github.com/$(grep -m 1 "$1" $HOME/.ghrepos)"
-}

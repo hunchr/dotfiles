@@ -32,21 +32,22 @@ plugin() {
 # Install brew formulae and casks
 if [ "${1-}" = init ]; then
   # Output of `brew leaves | tr '\n' ' '`
-  brew install --formula act automake awscli bash bazel bombardier cmake \
-    coreutils curl deno docker-completion e2fsprogs elixir-ls exiftool fd \
-    ffmpeg findutils fswatch geckodriver gh git gnu-sed gnu-tar go graphviz \
-    heroku/brew/heroku  httpd hyfetch hyperfine ios-deploy jansson \
-    jorgelbg/tap/pinentry-touchid jpeg jq jwt-cli kind kubectx \
+  brew install --formula act ansible ansible-lint automake awscli bash bazel \
+    bombardier cmake coreutils curl deno docker-completion e2fsprogs elixir-ls \
+    exiftool exiv2 fd ffmpeg findutils fswatch fzf geckodriver gh git gnu-sed \
+    gnu-tar go graphviz heroku/brew/heroku httpd hyfetch hyperfine ios-deploy \
+    jansson jorgelbg/tap/pinentry-touchid jpeg jq jwt-cli kind kubectx libidn \
     libimobiledevice libxslt libyaml llvm mas minio-mc mise mkcert mysql nginx \
-    ninech/taps/nctl ninja nmap ollama pdftk-java pgvector pinentry-mac \
-    postgresql@18 pygments redis ripgrep rustup s3cmd semaphoreci/tap/sem \
-    shellcheck tree vips viu wabt wget xcodegen yarn yq yt-dlp zip zsh
+    ninech/taps/nctl ninja nmap pcre ollama pdftk-java pgvector pinentry-mac \
+    postgresql@18 pygments rclone redis ripgrep rustup s3cmd \
+    schemacrawler/tap/schemacrawler shellcheck tmux tree vips wabt wget \
+    xcodegen yarn yq yt-dlp zip zlib zsh
 
-  brew install --cask 1password-cli android-studio chromedriver docker-desktop \
-    fork git-credential-manager google-chrome handbrake-app libreoffice \
-    librewolf mullvad-vpn ngrok obs pgadmin4 proton-drive proton-pass \
-    qbittorrent qlvideo raycast signal slack spotify stolendata-mpv \
-    the-unarchiver thunderbird tunnelblick vlc whatsapp
+  brew install --cask android-studio chromedriver docker-desktop fork \
+    git-credential-manager google-chrome handbrake-app libreoffice librewolf \
+    mullvad-vpn ngrok obs pgadmin4 proton-drive proton-pass qbittorrent \
+    qlvideo raycast signal slack spotify stolendata-mpv the-unarchiver \
+    thunderbird tunnelblick vlc whatsapp
 fi
 
 # Copy config files to home directory
