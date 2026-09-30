@@ -1,15 +1,15 @@
-fpath+=$HOME/.zfunc
+fpath+=~/.zfunc
 plugins=(fast-syntax-highlighting zsh-autocomplete)
 
-export ANDROID_HOME=$HOME/Library/Android/sdk
-export BUN_INSTALL=$HOME/.bun
-export CARGO_TARGET_DIR=$HOME/.cargo/target
+export ANDROID_HOME=~/Library/Android/sdk
+export BUN_INSTALL=~/.bun
+export CARGO_TARGET_DIR=~/.cargo/target
 export CPATH=/usr/local/include:/opt/homebrew/include:/opt/homebrew/opt/llvm/include:/opt/homebrew/opt/postgresql@18/include:$CPATH
 export CPPFLAGS='-I/opt/homebrew/opt/llvm/include -I/opt/homebrew/opt/sqlite/include -I/opt/homebrew/opt/postgresql@18/include'
 export DISABLE_UNTRACKED_FILES_DIRTY=true
 export DISPLAY=localhost:0
 export DO_NOT_TRACK=1
-export DRIVE="$HOME/Library/Mobile Documents/com~apple~CloudDocs/home"
+export DRIVE=~/Library/Mobile\ Documents/com~apple~CloudDocs/home
 export EDITOR='code --wait'
 export GPG_TTY=$(tty)
 export HOMEBREW_NO_ENV_HINTS=1
@@ -21,60 +21,61 @@ export NDK_HOME="$ANDROID_HOME/ndk/$(ls -1 $ANDROID_HOME/ndk)"
 export PATH="{{PWD}}/bin:$HOME/.cargo/bin:$HOME/go/bin:/opt/homebrew/opt/llvm/bin:/opt/homebrew/opt/sqlite/bin:/opt/homebrew/opt/postgresql@18/bin:/opt/homebrew/opt/curl/bin:$HOME/.bun/bin:$PATH"
 export RUBYOPT=--enable=yjit
 export TZ=UTC
-export ZSH=$HOME/.oh-my-zsh
+export ZSH=~/.oh-my-zsh
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
 eval "$(/opt/homebrew/bin/mise activate zsh)"
 . $ZSH/oh-my-zsh.sh
 
-alias b='bun'
+alias awsc='code ~/.aws/credentials'
+alias b=bun
 alias be='bundle exec'
 alias bi='bundle install'
 alias bla='bundle lock --add-platform'
 alias blr='bundle lock --remove-platform'
 alias br='bun run'
-alias brwe='brew'
+alias brwe=brew
 alias bu='bundle update'
 alias bua='bundle update --all'
-alias c='cargo'
+alias c=cargo
+alias cov='open coverage/index.html'
 alias cr='cargo r -q --'
 alias ct='cargo t -q'
 alias dcd='docker compose down'
 alias dce='docker exec -it "$(docker ps -qf name=app-1 -f name=web-1)" bash' 
 alias dco='docker compose'
 alias dcu='docker compose up -d'
-alias dl='cd $HOME/Downloads'
+alias dl='cd ~/Downloads'
 alias dns='sudo dscacheutil -flushcache && sudo killall -HUP mDNSResponder'
 alias dotf='code "{{PWD}}"'
-alias e='code'
+alias e=code
 alias er='code -r'
-alias f='if [ -f bin/lint ]; then bin/lint; else bin/fastcheck; fi'
+alias f=bin/lint
 alias ffcolor='open "https://color.firefox.com/?theme=XQAAAAJ6AgAAAAAAAABBKYhm849SCicxcUEYWXcGHf3p79EhVPQ41r7xcfZ9PTtZXOCodCzcptzyX3upVH9adVuj2mXdFr63EzkgliO-MRy-QJvv3UOz8NB6_XLCNEkN6pWzKrg907l38HgqznJdbpzuM6NIBQtjTzdvmSxavrK7qGahlGQ5xWlQEvBlqV0qvHpAum8iaEDF5LZI3giZMaZeLTd8lr9PtdYjRFPqmUfS4LRgX_vqHDL324j_IUPmsDzoS7tmerB6mAHRCdP9BrTchXyXn4z07_4a5EPsTtzsR2VxwSkA7Fsh7cd_wsLLxMownq4oyhjUUjwD_tWVKw"'
 alias fn='find . -name'
 alias fsize='du -sh * | sort -hr'
-alias g='git'
+alias g=git
 alias gitd='find . -name .git -type d'
-alias i='cd "$DRIVE/coding"'
+alias i='kitty icat --align=left'
 alias ip='echo "private: $(ipconfig getifaddr en0)/$(ipconfig getoption en0 subnet_mask | awk -F . '"'"'{print ($1==255)*8+($2==255)*8+($3==255)*8+($4==255)*8}'"'"')\npublic:  $(curl -fsL ifconfig.me)/32"'
-alias k='kitty icat --align left'
+alias j='cd "$DRIVE/coding"'
 alias l='ls -AFG'
-alias lsl='ls {/Library/LaunchAgents,/Library/LaunchDaemons,$HOME/Library/LaunchAgents}'
+alias la='ls {/Library/LaunchAgents,/Library/LaunchDaemons,~/Library/LaunchAgents}'
 alias m='bin/rails db:migrate'
-alias my='code $HOME/.my.cnf'
-alias n='ln -s $HOME/node_modules .'
-alias neofetch='neowofetch --config $HOME/neofetch.conf'
+alias myc='code ~/.my.cnf'
+alias n='ln -s ~/node_modules .'
+alias neofetch='neowofetch --config ~/neofetch.conf'
 alias nmp='nmap -Pn -p 1-65535 $(ipconfig getifaddr en0)'
 alias p='psql -d postgres'
-alias pf='bun -b x prettier --log-level warn -w .'
+alias pf='bun -b x prettier --log-level=warn -w .'
 alias pg_dat='psql -c "SELECT datcollate, datctype FROM pg_database WHERE datname = current_database();" -d'
-alias pg_lint='schemacrawler --command lint --info-level maximum --no-info --server postgresql --database'
+alias pg_lint='schemacrawler -c lint -i maximum --no-info --server=postgresql --database'
 alias pg_schema='pg_dump -Osf schema.sql'
 alias pg_size='psql -c "SELECT relname AS table_name, pg_size_pretty(pg_relation_size(relid)) AS size FROM pg_catalog.pg_statio_user_tables ORDER BY pg_relation_size(relid) DESC;" -d'
 alias pgrestore='pg_restore -OU $USER -cvh localhost latest.dump -d'
-alias pinentry='pinentry-mac'
-alias q='exec zsh'
+alias pinentry=pinentry-mac
 alias quarantine='xattr -d com.apple.quarantine'
-alias r='bin/rails'
+alias r=bin/rails
 alias rc='bundle exec rubocop'
 alias rd="psql -d postgres -c \"SELECT pg_terminate_backend(pid) FROM pg_stat_activity WHERE datname != 'postgres';\" && bin/rails db:drop && bin/rails db:prepare"
 alias rl='readlink -f'
@@ -82,7 +83,6 @@ alias rlsp='gem i ruby-lsp solargraph'
 alias rp='bundle exec rspec'
 alias rr='bin/rails routes | rg -S'
 alias rt='bin/rails test'
-alias s3='code $HOME/.aws/credentials'
 alias s='rg -.pSC 2'
 alias s_css='rg -.pSC 2 -g "*.(css|sass|scss)"'
 alias s_js='rg -.pSC 2 -g "*.[jt]s"'
@@ -92,14 +92,17 @@ alias s_rs='rg -.pSC 2 -g "*.rs"'
 alias s_sql='rg -.pSC 2 -g "*.sql"'
 alias s_toml='rg -.pSC 2 -g "*.toml"'
 alias s_yml='rg -.pSC 2 -g "*.yml"'
-alias scov='open coverage/index.html'
 alias sf='rg -. --files | rg -S'
-alias sq='sqlite3'
-alias sshc='code $HOME/.ssh/config'
+alias sq=sqlite3
+alias sshc='code ~/.ssh/config'
 alias svg='bun -b x svgo --multipass -f'
-alias t='if [ -f bin/test ]; then bin/test; else bin/check; fi'
+alias t=bin/test
 alias treed='tree . -ahno tree.txt -FI ".git|node_modules|target|tmp" --dirsfirst --du --sort=size'
 alias unhide='chflags -R 0 .'
 alias up='brew up && brew upgrade -gy && brew cleanup'
 alias v='[[ $(mullvad status) =~ Connected ]] && mullvad disconnect -w || (mullvad connect -w > /dev/null && mullvad status)'
-alias z='code $HOME/.zshrc'
+alias z='exec zsh'
+
+vt() {
+  open "https://www.virustotal.com/gui/search?query=$(sha256 -q $1)"
+}

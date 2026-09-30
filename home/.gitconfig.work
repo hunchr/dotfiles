@@ -1,8 +1,0 @@
-[user]
-  name = {{GIT_WORK_NAME}}
-  email = {{GIT_WORK_EMAIL}}
-  signingkey = {{GIT_WORK_SIGNINGKEY}}
-[gpg]
-  format = ssh
-[gpg "ssh"]
-  format = ssh

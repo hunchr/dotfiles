@@ -40,7 +40,6 @@
   "git.openRepositoryInParentFolders": "never",
   "git.path": "/opt/homebrew/bin/git",
   "git.replaceTagsWhenPull": true,
-  "github.copilot.chat.copilotDebugCommand.enabled": false,
   "js/ts.updateImportsOnFileMove.enabled": "always",
   "search.smartCase": true,
   "security.promptForLocalFileProtocolHandling": false,
@@ -68,11 +67,17 @@
   "workbench.secondarySideBar.defaultVisibility": "hidden",
   "workbench.startupEditor": "none",
 
-  // Copilot
+  // AI
   "chat.agent.enabled": false,
+  "chat.agent.thinking.terminalTools": false,
   "chat.viewSessions.enabled": false,
+  "claudeCode.preferredLocation": "panel",
+  "claudeCode.usePythonEnvironment": false,
+  "github.copilot.chat.copilotDebugCommand.enabled": false,
   "github.copilot.chat.localeOverride": "en",
+  "github.copilot.chat.setupTests.enabled": false,
   "github.copilot.enable": { "*": false },
+  "terminal.integrated.shellIntegration.quickFixEnabled": false,
 
   // Formatters
   "[elixir]": { "editor.defaultFormatter": "JakeBecker.elixir-ls" },
